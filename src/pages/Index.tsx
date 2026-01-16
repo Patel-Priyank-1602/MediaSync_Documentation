@@ -1,5 +1,6 @@
-import { Video, Music, Wifi, Play, Pause, SkipForward, QrCode, Users, Server } from "lucide-react";
+import { Video, Music, Wifi, Play, SkipForward, QrCode, Users, Server, Github } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 import { FeatureCard } from "@/components/home/FeatureCard";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
@@ -8,7 +9,7 @@ const Index = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <Navbar />
       
       {/* Hero Section */}
@@ -28,7 +29,7 @@ const Index = () => {
             </p>
             <p className="mt-6 text-base text-muted-foreground leading-relaxed md:text-lg">
               A simple, self-hosted Node.js server designed to synchronize YouTube video, 
-              Local Video and Local Audio playback across multiple clients on a local network 🏠. 
+              Local Video and Local Audio playback across multiple clients on a local network. 
               Perfect for creating a shared viewing experience where one person can control 
               the video (play, pause, seek, load) for everyone else, all in real-time.
             </p>
@@ -39,6 +40,12 @@ const Index = () => {
               <Button variant="outline" size="lg" onClick={() => navigate("/docs/setup")}>
                 Quick Setup Guide
               </Button>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                <Button variant="ghost" size="lg" className="gap-2">
+                  <Github className="h-5 w-5" />
+                  View on GitHub
+                </Button>
+              </a>
             </div>
           </div>
         </div>
@@ -48,7 +55,7 @@ const Index = () => {
       <section className="container px-4 pb-20">
         <div className="mx-auto max-w-5xl">
           <h2 className="text-2xl font-bold text-foreground text-center mb-8 md:text-3xl">
-            🚀 Features
+            Features
           </h2>
           
           <div className="grid gap-6 md:grid-cols-2">
@@ -89,7 +96,7 @@ const Index = () => {
             <FeatureCard
               icon={<Play className="h-5 w-5" />}
               title="Core Controls"
-              description="Supports Play ▶️, Pause ⏸️, Seek ⏩, and Restart ⏮️. Full control over synchronized playback for all clients."
+              description="Supports Play, Pause, Seek, and Restart. Full control over synchronized playback for all clients."
             >
               <div className="flex items-center justify-center gap-2 rounded-xl bg-muted/50 px-4 py-3 border border-border">
                 <Button size="icon" variant="ghost" className="h-10 w-10 rounded-full">
@@ -97,9 +104,6 @@ const Index = () => {
                 </Button>
                 <Button size="icon" variant="signup" className="h-12 w-12 rounded-full">
                   <Play className="h-5 w-5" />
-                </Button>
-                <Button size="icon" variant="ghost" className="h-10 w-10 rounded-full">
-                  <Pause className="h-4 w-4" />
                 </Button>
                 <Button size="icon" variant="ghost" className="h-10 w-10 rounded-full">
                   <SkipForward className="h-4 w-4" />
@@ -126,13 +130,19 @@ const Index = () => {
             <FeatureCard
               icon={<Users className="h-5 w-5" />}
               title="Status Dashboard"
-              description="The controller page shows a live count of connected clients 👥. Monitor your audience in real-time."
+              description="The controller page shows a live count of connected clients. Monitor your audience in real-time."
             >
               <div className="flex items-center gap-3 rounded-xl bg-muted/50 px-4 py-3 border border-border">
                 <div className="flex -space-x-2">
-                  <div className="h-8 w-8 rounded-full bg-primary/30 border-2 border-card flex items-center justify-center text-xs">👤</div>
-                  <div className="h-8 w-8 rounded-full bg-primary/40 border-2 border-card flex items-center justify-center text-xs">👤</div>
-                  <div className="h-8 w-8 rounded-full bg-primary/50 border-2 border-card flex items-center justify-center text-xs">👤</div>
+                  <div className="h-8 w-8 rounded-full bg-primary/30 border-2 border-card flex items-center justify-center">
+                    <Users className="h-4 w-4 text-primary" />
+                  </div>
+                  <div className="h-8 w-8 rounded-full bg-primary/40 border-2 border-card flex items-center justify-center">
+                    <Users className="h-4 w-4 text-primary" />
+                  </div>
+                  <div className="h-8 w-8 rounded-full bg-primary/50 border-2 border-card flex items-center justify-center">
+                    <Users className="h-4 w-4 text-primary" />
+                  </div>
                 </div>
                 <div className="ml-auto flex items-center gap-2">
                   <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
@@ -165,7 +175,7 @@ const Index = () => {
       <section className="container px-4 pb-20">
         <div className="mx-auto max-w-3xl">
           <h2 className="text-2xl font-bold text-foreground text-center mb-8 md:text-3xl">
-            🛠️ Tech Stack
+            Tech Stack
           </h2>
           <div className="grid gap-4 sm:grid-cols-3">
             <div className="rounded-xl bg-card border border-border p-6 text-center">
@@ -187,28 +197,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-border bg-card">
-        <div className="container px-4 py-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2">
-              <Server className="h-5 w-5 text-primary" />
-              <span className="font-semibold text-foreground">MediaSync</span>
-            </div>
-            <div className="flex items-center gap-6 text-sm text-muted-foreground">
-              <button onClick={() => navigate("/about")} className="hover:text-foreground transition-colors">
-                About
-              </button>
-              <button onClick={() => navigate("/contact")} className="hover:text-foreground transition-colors">
-                Contact
-              </button>
-              <button onClick={() => navigate("/docs")} className="hover:text-foreground transition-colors">
-                Documentation
-              </button>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <div className="flex-1" />
+      <Footer />
     </div>
   );
 };

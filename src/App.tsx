@@ -8,6 +8,7 @@ import Docs from "./pages/Docs";
 import SetupPage from "./pages/docs/SetupPage";
 import UsagePage from "./pages/docs/UsagePage";
 import TroubleshootingPage from "./pages/docs/TroubleshootingPage";
+import FAQPage from "./pages/docs/FAQPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import GenericDocPage from "./pages/docs/GenericDocPage";
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/docs/setup" element={<SetupPage />} />
           <Route path="/docs/usage" element={<UsagePage />} />
           <Route path="/docs/troubleshooting" element={<TroubleshootingPage />} />
+          <Route path="/docs/faq" element={<FAQPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
           {/* Generic doc pages for all other routes */}

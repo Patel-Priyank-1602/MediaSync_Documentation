@@ -39,10 +39,11 @@ const sidebarItems: SidebarItem[] = [
     ],
   },
   {
-    title: "Troubleshooting",
+    title: "Help",
     icon: <AlertTriangle className="h-4 w-4" />,
     children: [
-      { title: "Common Issues", href: "/docs/troubleshooting" },
+      { title: "Troubleshooting", href: "/docs/troubleshooting" },
+      { title: "FAQ", href: "/docs/faq" },
     ],
   },
 ];

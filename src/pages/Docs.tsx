@@ -1,4 +1,4 @@
-import { Video, Music, Wifi, Settings, Terminal, AlertTriangle, Smartphone, FileCode } from "lucide-react";
+import { Video, Music, Wifi, Settings, Terminal, AlertTriangle, Smartphone, FileCode, HelpCircle } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { DocsSidebar } from "@/components/layout/DocsSidebar";
 import { DocCard } from "@/components/docs/DocCard";
@@ -79,9 +79,9 @@ const DocsPage = () => {
 
             {/* Configuration Section */}
             <section className="mb-12">
-              <h2 className="text-2xl font-semibold text-foreground mb-3">Configuration</h2>
+              <h2 className="text-2xl font-semibold text-foreground mb-3">Configuration & Help</h2>
               <p className="text-muted-foreground mb-6">
-                Learn how to configure the server for your network.
+                Learn how to configure the server and troubleshoot issues.
               </p>
 
               <div className="grid gap-4 md:grid-cols-2">
@@ -96,6 +96,12 @@ const DocsPage = () => {
                   title="Troubleshooting"
                   description="Common issues and how to fix them."
                   href="/docs/troubleshooting"
+                />
+                <DocCard
+                  icon={<HelpCircle className="h-6 w-6" />}
+                  title="FAQ"
+                  description="Frequently asked questions about MediaSync."
+                  href="/docs/faq"
                 />
               </div>
             </section>
