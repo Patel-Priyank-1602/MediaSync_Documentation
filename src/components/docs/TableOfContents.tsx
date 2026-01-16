@@ -24,7 +24,7 @@ export function TableOfContents({ items }: TableOfContentsProps) {
         });
       },
       {
-        rootMargin: "-80px 0% -80% 0%",
+        rootMargin: "-100px 0% -80% 0%",
         threshold: 0,
       }
     );
@@ -44,7 +44,7 @@ export function TableOfContents({ items }: TableOfContentsProps) {
     if (element) {
       const offset = 100;
       const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      const offsetPosition = elementPosition + window.scrollY - offset;
 
       window.scrollTo({
         top: offsetPosition,
@@ -56,27 +56,29 @@ export function TableOfContents({ items }: TableOfContentsProps) {
   if (items.length === 0) return null;
 
   return (
-    <div className="hidden xl:block sticky top-24 h-fit w-56 shrink-0 mr-6 mt-8">
-      <div className="border-l border-border pl-4">
-        <h4 className="text-sm font-semibold text-foreground mb-3">On this page</h4>
-        <nav className="space-y-1">
-          {items.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => handleClick(item.id)}
-              className={cn(
-                "block w-full text-left text-sm py-1 transition-colors",
-                item.level === 3 && "pl-3",
-                activeId === item.id
-                  ? "text-primary font-medium"
-                  : "text-muted-foreground hover:text-foreground"
-              )}
-            >
-              {item.title}
-            </button>
-          ))}
-        </nav>
+    <aside className="hidden xl:block w-64 shrink-0">
+      <div className="fixed top-20 right-8 w-56 max-h-[calc(100vh-6rem)] overflow-y-auto">
+        <div className="border-l border-border pl-4 py-4">
+          <h4 className="text-sm font-semibold text-foreground mb-3">On this page</h4>
+          <nav className="space-y-1">
+            {items.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => handleClick(item.id)}
+                className={cn(
+                  "block w-full text-left text-sm py-1 transition-colors",
+                  item.level === 3 && "pl-3",
+                  activeId === item.id
+                    ? "text-primary font-medium"
+                    : "text-muted-foreground hover:text-foreground"
+                )}
+              >
+                {item.title}
+              </button>
+            ))}
+          </nav>
+        </div>
       </div>
-    </div>
+    </aside>
   );
 }

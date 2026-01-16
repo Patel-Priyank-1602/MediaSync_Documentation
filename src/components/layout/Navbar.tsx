@@ -28,10 +28,11 @@ export function Navbar() {
     { label: "Documentation", href: "/docs" },
   ];
 
-  // Docs page: Setup, search (centered), Contact, About
+  // Docs page: Setup Guide, search (centered), Contact, About
   const docsNavItems = [
-    { label: "Setup", href: "/docs/setup" },
+    { label: "Setup", href: "/docs/setup-guide" },
   ];
+
 
   const navItems = isDocsPage ? docsNavItems : mainNavItems;
 
@@ -186,12 +187,12 @@ export function Navbar() {
               <>
                 <button
                   onClick={() => {
-                    navigate("/docs/setup");
+                    navigate("/docs/setup-guide");
                     setIsMobileMenuOpen(false);
                   }}
                   className={cn(
                     "block w-full text-left px-4 py-2 rounded-lg transition-colors",
-                    location.pathname === "/docs/setup"
+                    location.pathname === "/docs/setup-guide"
                       ? "text-primary bg-primary/10"
                       : "text-foreground hover:bg-muted"
                   )}

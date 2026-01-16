@@ -72,33 +72,32 @@ const tocItems = [
 
 const FAQPage = () => {
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background">
       <Navbar />
-      <div className="flex flex-1">
+      <div className="flex">
         <DocsSidebar />
-        <main className="flex-1 overflow-y-auto">
-          <div className="flex">
-            <div className="container max-w-4xl px-4 py-8 md:px-12">
-              <Breadcrumb
-                items={[
-                  { label: "Documentation", href: "/docs" },
-                  { label: "FAQ" },
-                ]}
-              />
+        <div className="flex-1 flex">
+          <main className="flex-1 px-4 py-8 md:px-12 max-w-4xl">
+            <Breadcrumb
+              items={[
+                { label: "Documentation", href: "/docs" },
+                { label: "FAQ" },
+              ]}
+            />
 
-              <h1 className="text-3xl font-bold text-foreground mb-6 md:text-5xl">
-                Frequently Asked Questions
-              </h1>
+            <h1 className="text-3xl font-bold text-foreground mb-6 md:text-5xl">
+              Frequently Asked Questions
+            </h1>
 
-              <p className="text-muted-foreground text-lg mb-8">
-                Find answers to commonly asked questions about MediaSync.
-              </p>
+            <p className="text-muted-foreground text-lg mb-8">
+              Find answers to commonly asked questions about MediaSync.
+            </p>
 
-              {/* General Questions */}
-              <section className="mb-10" id="general">
-                <h2 className="text-2xl font-semibold text-foreground mb-4">
-                  General Questions
-                </h2>
+            {/* General Questions */}
+            <section className="mb-10" id="general">
+              <h2 className="text-2xl font-semibold text-foreground mb-4">
+                General Questions
+              </h2>
                 <Accordion type="single" collapsible className="space-y-2">
                   {faqItems.slice(0, 4).map((item, index) => (
                     <AccordionItem
@@ -191,14 +190,13 @@ const FAQPage = () => {
               <DocNavigation
                 previous={{ title: "Troubleshooting", href: "/docs/troubleshooting" }}
               />
-            </div>
+            </main>
             <TableOfContents items={tocItems} />
           </div>
-        </main>
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
-  );
-};
-
-export default FAQPage;
+    );
+  };
+  
+  export default FAQPage;
