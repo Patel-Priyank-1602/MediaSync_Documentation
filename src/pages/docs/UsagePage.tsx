@@ -46,23 +46,22 @@ const tocItems = [
 
 const UsagePage = () => {
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background">
       <Navbar />
-      <div className="flex flex-1">
+      <div className="flex">
         <DocsSidebar />
-        <main className="flex-1 overflow-y-auto">
-          <div className="flex">
-            <div className="container max-w-4xl px-4 py-8 md:px-12">
-              <Breadcrumb
-                items={[
-                  { label: "Documentation", href: "/docs" },
-                  { label: "How to Use" },
-                ]}
-              />
+        <div className="flex-1 flex">
+          <main className="flex-1 px-4 py-8 md:px-12 max-w-4xl">
+            <Breadcrumb
+              items={[
+                { label: "Documentation", href: "/docs" },
+                { label: "How to Use" },
+              ]}
+            />
 
-              <h1 className="text-3xl font-bold text-foreground mb-6 md:text-5xl">
-                How to Use
-              </h1>
+            <h1 className="text-3xl font-bold text-foreground mb-6 md:text-5xl">
+              How to Use
+            </h1>
 
               {/* Step 1: Start Server */}
               <section className="mb-10" id="start-server">
@@ -172,14 +171,13 @@ const UsagePage = () => {
                 previous={{ title: "Installation & Setup", href: "/docs/setup" }}
                 next={{ title: "Troubleshooting", href: "/docs/troubleshooting" }}
               />
-            </div>
+            </main>
             <TableOfContents items={tocItems} />
           </div>
-        </main>
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
-  );
-};
-
-export default UsagePage;
+    );
+  };
+  
+  export default UsagePage;
