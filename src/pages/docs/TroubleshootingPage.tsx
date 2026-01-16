@@ -2,6 +2,8 @@ import { Navbar } from "@/components/layout/Navbar";
 import { DocsSidebar } from "@/components/layout/DocsSidebar";
 import { Breadcrumb } from "@/components/docs/Breadcrumb";
 import { TableOfContents } from "@/components/docs/TableOfContents";
+import { DocNavigation } from "@/components/docs/DocNavigation";
+import { Footer } from "@/components/layout/Footer";
 import { AlertTriangle } from "lucide-react";
 
 const tocItems = [
@@ -12,9 +14,9 @@ const tocItems = [
 
 const TroubleshootingPage = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <Navbar />
-      <div className="flex">
+      <div className="flex flex-1">
         <DocsSidebar />
         <main className="flex-1 overflow-y-auto">
           <div className="flex">
@@ -135,11 +137,17 @@ const TroubleshootingPage = () => {
                   </p>
                 </div>
               </section>
+
+              <DocNavigation
+                previous={{ title: "How to Use", href: "/docs/usage" }}
+                next={{ title: "FAQ", href: "/docs/faq" }}
+              />
             </div>
             <TableOfContents items={tocItems} />
           </div>
         </main>
       </div>
+      <Footer />
     </div>
   );
 };

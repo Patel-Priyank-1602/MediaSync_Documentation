@@ -2,6 +2,8 @@ import { Navbar } from "@/components/layout/Navbar";
 import { DocsSidebar } from "@/components/layout/DocsSidebar";
 import { Breadcrumb } from "@/components/docs/Breadcrumb";
 import { TableOfContents } from "@/components/docs/TableOfContents";
+import { DocNavigation } from "@/components/docs/DocNavigation";
+import { Footer } from "@/components/layout/Footer";
 import { Copy, Check, Video, FileVideo, Music } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -16,8 +18,8 @@ const CodeBlock = ({ children, language = "bash" }: { children: string; language
   };
 
   return (
-    <div className="relative group rounded-lg bg-[#0d0d0d] border border-border overflow-hidden">
-      <div className="flex items-center justify-between px-4 py-2 border-b border-border bg-muted/30">
+    <div className="relative group rounded-lg bg-muted dark:bg-[#0d0d0d] border border-border overflow-hidden">
+      <div className="flex items-center justify-between px-4 py-2 border-b border-border bg-muted/50 dark:bg-muted/30">
         <span className="text-xs text-muted-foreground">{language}</span>
         <Button
           variant="ghost"
@@ -44,9 +46,9 @@ const tocItems = [
 
 const UsagePage = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <Navbar />
-      <div className="flex">
+      <div className="flex flex-1">
         <DocsSidebar />
         <main className="flex-1 overflow-y-auto">
           <div className="flex">
@@ -165,11 +167,17 @@ const UsagePage = () => {
                   </div>
                 </div>
               </section>
+
+              <DocNavigation
+                previous={{ title: "Installation & Setup", href: "/docs/setup" }}
+                next={{ title: "Troubleshooting", href: "/docs/troubleshooting" }}
+              />
             </div>
             <TableOfContents items={tocItems} />
           </div>
         </main>
       </div>
+      <Footer />
     </div>
   );
 };
