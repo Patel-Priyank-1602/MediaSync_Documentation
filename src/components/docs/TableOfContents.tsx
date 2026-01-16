@@ -56,7 +56,7 @@ export function TableOfContents({ items }: TableOfContentsProps) {
   if (items.length === 0) return null;
 
   return (
-    <div className="hidden xl:block sticky top-24 w-56 shrink-0">
+    <div className="hidden xl:block sticky top-20 w-56 shrink-0 pt-6">
       <div className="border-l border-border pl-4">
         <h4 className="text-sm font-semibold text-foreground mb-3">On this page</h4>
         <nav className="space-y-1">
