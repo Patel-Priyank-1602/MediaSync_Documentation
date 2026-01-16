@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 9%;
+    --foreground: 0 0% 91%;
+
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 91%;
+
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 91%;
+
+    --primary: 221 98% 56%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 91%;
+
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 64%;
+
+    --accent: 221 98% 56%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 221 98% 56%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 11%;
+    --sidebar-foreground: 0 0% 91%;
+    --sidebar-primary: 221 98% 56%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 91%;
+    --sidebar-border: 0 0% 18%;
+    --sidebar-ring: 221 98% 56%;
+  }
+
+  .dark {
+    --background: 0 0% 9%;
+    --foreground: 0 0% 91%;
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 91%;
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 91%;
+    --primary: 221 98% 56%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 91%;
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 64%;
+    --accent: 221 98% 56%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 221 98% 56%;
+    --sidebar-background: 0 0% 11%;
+    --sidebar-foreground: 0 0% 91%;
+    --sidebar-primary: 221 98% 56%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 91%;
+    --sidebar-border: 0 0% 18%;
+    --sidebar-ring: 221 98% 56%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+}
+
+@layer utilities {
+  .grid-pattern {
+    background-image: 
+      linear-gradient(to right, hsl(0 0% 20% / 0.3) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(0 0% 20% / 0.3) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+}
