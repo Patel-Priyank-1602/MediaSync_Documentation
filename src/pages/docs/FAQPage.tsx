@@ -2,6 +2,8 @@ import { Navbar } from "@/components/layout/Navbar";
 import { DocsSidebar } from "@/components/layout/DocsSidebar";
 import { Breadcrumb } from "@/components/docs/Breadcrumb";
 import { TableOfContents } from "@/components/docs/TableOfContents";
+import { DocNavigation } from "@/components/docs/DocNavigation";
+import { Footer } from "@/components/layout/Footer";
 import {
   Accordion,
   AccordionContent,
@@ -70,9 +72,9 @@ const tocItems = [
 
 const FAQPage = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <Navbar />
-      <div className="flex">
+      <div className="flex flex-1">
         <DocsSidebar />
         <main className="flex-1 overflow-y-auto">
           <div className="flex">
@@ -185,11 +187,16 @@ const FAQPage = () => {
                   </p>
                 </div>
               </section>
+
+              <DocNavigation
+                previous={{ title: "Troubleshooting", href: "/docs/troubleshooting" }}
+              />
             </div>
             <TableOfContents items={tocItems} />
           </div>
         </main>
       </div>
+      <Footer />
     </div>
   );
 };

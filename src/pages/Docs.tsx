@@ -3,12 +3,14 @@ import { Navbar } from "@/components/layout/Navbar";
 import { DocsSidebar } from "@/components/layout/DocsSidebar";
 import { DocCard } from "@/components/docs/DocCard";
 import { Breadcrumb } from "@/components/docs/Breadcrumb";
+import { DocNavigation } from "@/components/docs/DocNavigation";
+import { Footer } from "@/components/layout/Footer";
 
 const DocsPage = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <Navbar />
-      <div className="flex">
+      <div className="flex flex-1">
         <DocsSidebar />
         <main className="flex-1 overflow-y-auto">
           <div className="container max-w-4xl px-4 py-8 md:px-12">
@@ -105,9 +107,14 @@ const DocsPage = () => {
                 />
               </div>
             </section>
+
+            <DocNavigation
+              next={{ title: "Installation & Setup", href: "/docs/setup" }}
+            />
           </div>
         </main>
       </div>
+      <Footer />
     </div>
   );
 };

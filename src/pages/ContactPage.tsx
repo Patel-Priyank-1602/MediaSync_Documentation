@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/layout/Navbar";
-import { Server, Mail, Github, MessageSquare } from "lucide-react";
+import { Footer } from "@/components/layout/Footer";
+import { Mail, Github, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -33,10 +34,10 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <Navbar />
       
-      <main className="container px-4 py-16 md:py-24">
+      <main className="flex-1 container px-4 py-16 md:py-24">
         <div className="mx-auto max-w-3xl">
           {/* Header */}
           <div className="text-center mb-12">
@@ -181,28 +182,7 @@ const ContactPage = () => {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-border bg-card mt-16">
-        <div className="container px-4 py-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2">
-              <Server className="h-5 w-5 text-primary" />
-              <span className="font-semibold text-foreground">MediaSync</span>
-            </div>
-            <div className="flex items-center gap-6 text-sm text-muted-foreground">
-              <button onClick={() => navigate("/about")} className="hover:text-foreground transition-colors">
-                About
-              </button>
-              <button onClick={() => navigate("/contact")} className="hover:text-foreground transition-colors">
-                Contact
-              </button>
-              <button onClick={() => navigate("/docs")} className="hover:text-foreground transition-colors">
-                Documentation
-              </button>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
