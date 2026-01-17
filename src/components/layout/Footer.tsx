@@ -7,7 +7,8 @@ import {
   Server, 
   Twitter, 
   Download,
-  Contact
+  Contact,
+  Linkedin
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -49,23 +50,23 @@ export function Footer() {
             {/* Social Links */}
             <div className="flex items-center gap-3">
               <SocialLink 
-                href="https://github.com" 
+                href="https://github.com/Patel-Priyank-1602" 
                 icon={<Github className="h-5 w-5" />} 
                 label="Github" 
               />
               <SocialLink 
-                href="mailto:contact@mediasync.com" 
+                href="mailto:patelpriyank2526@gmail.com" 
                 icon={<Mail className="h-5 w-5" />} 
                 label="Email" 
               />
               <SocialLink 
-                href="https://twitter.com" 
+                href="https://x.com/Priyank_P16" 
                 icon={<Twitter className="h-5 w-5" />} 
                 label="Twitter" 
               />
               <SocialLink 
-                href="https://mediasync.com" 
-                icon={<ExternalLink className="h-5 w-5" />} 
+                href="https://www.linkedin.com/in/patel-priyank-945131288/" 
+                icon={<Linkedin className="h-5 w-5" />} 
                 label="Website" 
               />
             </div>
@@ -114,14 +115,14 @@ export function Footer() {
                   asChild 
                   className="w-full shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all duration-300"
                 >
-                  <Link to="/docs/setup">
+                  <Link to="/docs/setup-guide">
                     <Download className="h-4 w-4 mr-2" />
                     Start Setup
                   </Link>
                 </Button>
                 
                 <a 
-                  href="mailto:patelpriyank2626@gmail.com"
+                  href="/contact"
                   className="flex items-center justify-center w-full py-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200"
                 >
                   <Contact className="h-4 w-4 mr-2" />
