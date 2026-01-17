@@ -1,181 +1,232 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { Mail, Github, MessageSquare } from "lucide-react";
+import {
+  Mail,
+  Github,
+  Linkedin,
+  Instagram,
+  MapPin,
+  Phone,
+  Twitter,
+  Laptop2,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useForm, ValidationError } from "@formspree/react";
 
 const ContactPage = () => {
-  const navigate = useNavigate();
   const { toast } = useToast();
+  
+  // Formspree Hook
+  const [state, handleSubmit] = useForm("xreeerwj");
+
+  // Local state for controlled inputs (to allow clearing the form)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
     message: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "Message sent!",
-      description: "Thank you for reaching out. We'll get back to you soon.",
-    });
-    
-    setFormData({ name: "", email: "", subject: "", message: "" });
-    setIsSubmitting(false);
+  // Effect to handle success state from Formspree
+  useEffect(() => {
+    if (state.succeeded) {
+      toast({
+        title: "Message sent!",
+        description: "Thanks for reaching out. I’ll get back to you soon.",
+      });
+      
+      // Reset form fields
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    }
+  }, [state.succeeded, toast]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Navbar />
-      
+
       <main className="flex-1 container px-4 py-16 md:py-24">
-        <div className="mx-auto max-w-3xl">
-          {/* Header */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-primary/10 mb-6">
-              <MessageSquare className="h-8 w-8 text-primary" />
-            </div>
-            <h1 className="text-3xl font-bold text-foreground mb-4 md:text-5xl">
-              Get in Touch
+        <div className="mx-auto max-w-6xl">
+          {/* HEADER */}
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground">
+              Get in{" "}
+              <span className="bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent">
+                Touch
+              </span>
             </h1>
-            <p className="text-lg text-muted-foreground">
-              Have questions or feedback? We'd love to hear from you.
+
+            <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
+              Have a question, project idea, or just want to say hi?
+              Fill out the form or connect with me directly.
             </p>
           </div>
 
-          <div className="grid gap-8 lg:grid-cols-5">
-            {/* Contact Info */}
-            <div className="lg:col-span-2 space-y-6">
-              <div className="rounded-xl bg-card border border-border p-6">
-                <h2 className="text-lg font-semibold text-foreground mb-4">Contact Info</h2>
-                <div className="space-y-4">
-                  <a 
-                    href="mailto:hello@mediasync.dev" 
-                    className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-muted">
-                      <Mail className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <div className="text-sm text-muted-foreground">Email</div>
-                      <div className="text-foreground">hello@mediasync.dev</div>
-                    </div>
-                  </a>
-                  <a 
-                    href="https://github.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-muted">
-                      <Github className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <div className="text-sm text-muted-foreground">GitHub</div>
-                      <div className="text-foreground">View Source Code</div>
-                    </div>
-                  </a>
-                </div>
-              </div>
+          {/* GRID */}
+          <div className="grid gap-12 lg:grid-cols-12">
+            {/* FORM */}
+            <div className="lg:col-span-7">
+              <div className="rounded-2xl border border-border bg-card p-6 md:p-8">
+                <h2 className="text-lg font-semibold mb-6">Send a message</h2>
 
-              <div className="rounded-xl bg-primary/10 border border-primary/20 p-6">
-                <h3 className="font-semibold text-foreground mb-2">Quick Help</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Before reaching out, check if your question is answered in our documentation.
-                </p>
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  onClick={() => navigate("/docs/troubleshooting")}
-                  className="w-full"
-                >
-                  View Troubleshooting Guide
-                </Button>
-              </div>
-            </div>
-
-            {/* Contact Form */}
-            <div className="lg:col-span-3">
-              <div className="rounded-xl bg-card border border-border p-6 md:p-8">
-                <h2 className="text-lg font-semibold text-foreground mb-6">Send a Message</h2>
+                {/* Formspree Form */}
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                        Name
-                      </label>
+                      <label htmlFor="name" className="text-sm font-medium">Name</label>
                       <input
-                        type="text"
                         id="name"
+                        name="name" // Required by Formspree
+                        required
                         value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        required
-                        className="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                        onChange={handleInputChange}
                         placeholder="Your name"
+                        className="mt-2 w-full rounded-lg border border-border bg-background px-4 py-2.5 focus:ring-1 focus:ring-primary/40 outline-none"
                       />
+                      <ValidationError prefix="Name" field="name" errors={state.errors} className="text-red-500 text-xs mt-1" />
                     </div>
+
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                        Email
-                      </label>
+                      <label htmlFor="email" className="text-sm font-medium">Email</label>
                       <input
-                        type="email"
                         id="email"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        type="email"
+                        name="email" // Required by Formspree
                         required
-                        className="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-                        placeholder="your@email.com"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        placeholder="you@example.com"
+                        className="mt-2 w-full rounded-lg border border-border bg-background px-4 py-2.5 focus:ring-1 focus:ring-primary/40 outline-none"
                       />
+                      <ValidationError prefix="Email" field="email" errors={state.errors} className="text-red-500 text-xs mt-1" />
                     </div>
                   </div>
+
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
-                      Subject
-                    </label>
+                    <label htmlFor="subject" className="text-sm font-medium">Subject</label>
                     <input
-                      type="text"
                       id="subject"
-                      value={formData.subject}
-                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                      name="subject" // Formspree will capture this as an extra field
                       required
-                      className="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-                      placeholder="What's this about?"
+                      value={formData.subject}
+                      onChange={handleInputChange}
+                      placeholder="What’s this about?"
+                      className="mt-2 w-full rounded-lg border border-border bg-background px-4 py-2.5 focus:ring-1 focus:ring-primary/40 outline-none"
                     />
+                    <ValidationError prefix="Subject" field="subject" errors={state.errors} className="text-red-500 text-xs mt-1" />
                   </div>
+
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                      Message
-                    </label>
+                    <label htmlFor="message" className="text-sm font-medium">Message</label>
                     <textarea
                       id="message"
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      required
+                      name="message" // Required by Formspree
                       rows={5}
-                      className="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary resize-none"
-                      placeholder="Your message..."
+                      required
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      placeholder="Write your message..."
+                      className="mt-2 w-full rounded-lg border border-border bg-background px-4 py-3 resize-none focus:ring-1 focus:ring-primary/40 outline-none"
                     />
+                    <ValidationError prefix="Message" field="message" errors={state.errors} className="text-red-500 text-xs mt-1" />
                   </div>
-                  <Button 
-                    type="submit" 
-                    variant="signup" 
-                    size="lg" 
+
+                  <Button
+                    type="submit"
+                    size="lg"
+                    variant="signup"
                     className="w-full"
-                    disabled={isSubmitting}
+                    disabled={state.submitting}
                   >
-                    {isSubmitting ? "Sending..." : "Send Message"}
+                    {state.submitting ? "Sending..." : "Send message"}
                   </Button>
                 </form>
+              </div>
+            </div>
+
+            {/* INFO */}
+            <div className="lg:col-span-5 space-y-6">
+              {/* Mobile */}
+              <div className="rounded-2xl border border-border bg-card p-6">
+                <h3 className="font-semibold mb-4">Contact details</h3>
+
+                <div className="flex items-center gap-3 text-sm">
+                  <Phone className="h-4 w-4" />
+                  <span>+91 9512771016</span>
+                </div>
+
+                <div className="flex items-center gap-3 text-sm mt-3">
+                  <Mail className="h-4 w-4" />
+                  <span>patelpriyank2526@gmail.com</span>
+                </div>
+
+                <div className="flex items-center gap-3 text-sm mt-3">
+                  <MapPin className="h-4 w-4" />
+                  <span>Gandhinagar, Gujarat</span>
+                </div>
+              </div>
+
+              {/* SOCIALS */}
+              <div className="rounded-2xl border border-border bg-card p-6">
+                <h3 className="font-semibold mb-4">Social links</h3>
+
+                <div className="space-y-3 text-sm">
+                  <a
+                    href="https://www.linkedin.com/in/patel-priyank-945131288/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 hover:underline hover:text-primary transition-colors"
+                  >
+                    <Linkedin className="h-4 w-4" /> LinkedIn
+                  </a>
+                
+                  <a
+                    href="https://github.com/Patel-Priyank-1602"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 hover:underline hover:text-primary transition-colors"
+                  >
+                    <Github className="h-4 w-4" /> GitHub
+                  </a>
+                  
+                  <a
+                    href="https://x.com/Priyank_P16"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 hover:underline hover:text-primary transition-colors"
+                  >
+                    <Twitter className="h-4 w-4" /> X
+                  </a>
+                  
+                  <a
+                    href="https://www.instagram.com/patelpriyank.d"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 hover:underline hover:text-primary transition-colors"
+                  >
+                    <Instagram className="h-4 w-4" /> Instagram
+                  </a>
+                  
+                  <a
+                    href="https://priyank.pages.dev"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 hover:underline hover:text-primary transition-colors"
+                  >
+                    <Laptop2 className="h-4 w-4" /> Portfolio
+                  </a>
+                </div>
               </div>
             </div>
           </div>
