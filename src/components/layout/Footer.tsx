@@ -5,13 +5,13 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border bg-card">
+    <footer className="border-t border-border bg-card relative z-10">
       <div className="container px-4 py-12">
         <div className="grid gap-8 md:grid-cols-4">
           {/* Brand */}
           <div className="md:col-span-1">
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <Server className="h-6 w-6 text-primary" />
+              <img src="/logo.webp" alt="MediaSync" className="h-8" />     
               <span className="text-lg font-bold text-foreground">MediaSync</span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
