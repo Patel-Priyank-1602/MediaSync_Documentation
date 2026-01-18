@@ -208,12 +208,12 @@ const Index = () => {
             <pre className="p-6 text-sm overflow-x-auto">
               <code className="text-foreground">
                 <span className="text-muted-foreground"># Clone the repository</span>{"\n"}
-                <span className="text-primary">git clone</span> {"https://github.com/Patel-Priyank-1602/File_Transfer.git"}{"\n"}
-                <span className="text-primary">cd</span> File_Transfer{"\n\n"}
+                <span className="text-primary">git clone</span> {"https://github.com/Patel-Priyank-1602/Media_Sync.git"}{"\n"}
+                <span className="text-primary">cd</span> Media_Sync{"\n\n"}
                 <span className="text-muted-foreground"># Install dependencies</span>{"\n"}
-                <span className="text-primary">pip install</span> -r requirements.txt{"\n\n"}
+                <span className="text-primary">npm</span> install{"\n\n"}
                 <span className="text-muted-foreground"># Start the server</span>{"\n"}
-                <span className="text-primary">python</span> app.py
+                <span className="text-primary">node</span> server.js
               </code>
             </pre>
           </div>
