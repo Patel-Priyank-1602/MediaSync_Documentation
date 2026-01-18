@@ -3,6 +3,7 @@ import { DocsSidebar } from "@/components/layout/DocsSidebar";
 import { Breadcrumb } from "@/components/docs/Breadcrumb";
 import { TableOfContents } from "@/components/docs/TableOfContents";
 import { DocNavigation } from "@/components/docs/DocNavigation";
+import { Footer } from "@/components/layout/Footer";
 import { AlertTriangle } from "lucide-react";
 
 const tocItems = [
@@ -17,23 +18,22 @@ const TroubleshootingPage = () => {
       <Navbar />
       <div className="flex">
         <DocsSidebar />
-        <main className="flex-1 overflow-y-auto">
-          <div className="flex">
-            <div className="container max-w-5xl px-4 py-8 md:px-12">
-              <Breadcrumb
-                items={[
-                  { label: "Documentation", href: "/docs" },
-                  { label: "Troubleshooting" },
-                ]}
-              />
+        <div className="flex-1 flex">
+          <main className="flex-1 px-4 py-8 md:px-12 max-w-4xl">
+            <Breadcrumb
+              items={[
+                { label: "Documentation", href: "/docs" },
+                { label: "Troubleshooting" },
+              ]}
+            />
 
-              <h1 className="text-3xl font-bold text-foreground mb-6 md:text-5xl">
-                Troubleshooting
-              </h1>
+            <h1 className="text-3xl font-bold text-foreground mb-6 md:text-5xl">
+              Troubleshooting
+            </h1>
 
-              <p className="text-muted-foreground text-lg mb-8">
-                Having issues? Here are solutions to common problems.
-              </p>
+            <p className="text-muted-foreground text-lg mb-8">
+              Having issues? Here are solutions to common problems.
+            </p>
 
               {/* Clients Not Syncing */}
               <section className="mb-10" id="not-syncing">
@@ -138,16 +138,16 @@ const TroubleshootingPage = () => {
               </section>
 
               <DocNavigation
-                previous={{ title: "Latency Optimization", href: "/docs/internals/latency" }}
-                next={{ title: "Sync Delay Issues", href: "/docs/troubleshooting/sync-delay" }}
+                previous={{ title: "How to Use", href: "/docs/usage" }}
+                next={{ title: "FAQ", href: "/docs/faq" }}
               />
-            </div>
+            </main>
             <TableOfContents items={tocItems} />
           </div>
-        </main>
+        </div>
+        <Footer />
       </div>
-    </div>
-  );
-};
-
-export default TroubleshootingPage;
+    );
+  };
+  
+  export default TroubleshootingPage;

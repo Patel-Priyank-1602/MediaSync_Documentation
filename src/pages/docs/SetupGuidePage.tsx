@@ -4,7 +4,7 @@ import { Breadcrumb } from "@/components/docs/Breadcrumb";
 import { TableOfContents } from "@/components/docs/TableOfContents";
 import { DocNavigation } from "@/components/docs/DocNavigation";
 import { Footer } from "@/components/layout/Footer";
-import { Copy, Check, Monitor, FolderOpen, Download, Wifi, Terminal, Github, Play, Globe, QrCode, Smartphone, Laptop } from "lucide-react";
+import { Copy, Check, Monitor, FolderOpen, Download, Wifi, Terminal, Github, Play, Globe, QrCode, Smartphone, Laptop, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -18,20 +18,21 @@ const CodeBlock = ({ children, language = "bash" }: { children: string; language
   };
 
   return (
-    <div className="relative group rounded-lg bg-muted dark:bg-[#0d0d0d] border border-border overflow-hidden">
-      <div className="flex items-center justify-between px-4 py-2 border-b border-border bg-muted/50 dark:bg-muted/30">
-        <span className="text-xs text-muted-foreground">{language}</span>
+    <div className="relative group rounded-lg bg-muted dark:bg-[#0d0d0d] border border-border overflow-hidden my-3 md:my-4">
+      <div className="flex items-center justify-between px-3 py-2 md:px-4 border-b border-border bg-muted/50 dark:bg-muted/30">
+        <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">{language}</span>
         <Button
           variant="ghost"
           size="sm"
           onClick={handleCopy}
           className="h-7 px-2 text-muted-foreground hover:text-foreground"
         >
-          {copied ? <Check className="h-3 w-3" /> : <Copy className="h-3 w-3" />}
+          {copied ? <Check className="h-3 w-3 mr-1" /> : <Copy className="h-3 w-3 mr-1" />}
+          <span className="text-xs">{copied ? "Copied" : "Copy"}</span>
         </Button>
       </div>
-      <pre className="p-4 overflow-x-auto">
-        <code className="text-sm text-foreground font-mono">{children}</code>
+      <pre className="p-3 md:p-4 overflow-x-auto">
+        <code className="text-xs md:text-sm text-foreground font-mono whitespace-pre">{children}</code>
       </pre>
     </div>
   );
@@ -48,36 +49,38 @@ interface StepSectionProps {
 
 const StepSection = ({ stepNumber, title, description, icon, imagePlaceholder, children }: StepSectionProps) => {
   return (
-    <div className="rounded-2xl border border-border bg-card overflow-hidden">
+    <div className="rounded-xl border border-border bg-card overflow-hidden">
       {/* Header */}
-      <div className="flex items-center gap-4 p-6 border-b border-border bg-gradient-to-r from-primary/10 to-transparent">
-        <div className="flex items-center justify-center h-14 w-14 rounded-2xl bg-primary text-primary-foreground font-bold text-xl">
+      <div className="flex items-start md:items-center gap-3 md:gap-4 p-4 md:p-6 border-b border-border bg-gradient-to-r from-primary/10 to-transparent">
+        <div className="flex items-center justify-center h-10 w-10 md:h-14 md:w-14 rounded-lg md:rounded-xl bg-primary text-primary-foreground font-bold text-lg md:text-2xl shrink-0 shadow-sm">
           {stepNumber}
         </div>
-        <div className="flex-1">
-          <h3 className="text-2xl font-bold text-foreground">{title}</h3>
-          <p className="text-muted-foreground mt-1">{description}</p>
+        <div className="flex-1 min-w-0 py-0.5">
+          <h3 className="text-lg md:text-2xl font-bold text-foreground truncate">{title}</h3>
+          <p className="text-sm md:text-base text-muted-foreground mt-0.5 md:mt-1 line-clamp-2 md:line-clamp-none leading-relaxed">
+            {description}
+          </p>
         </div>
-        <div className="hidden sm:flex items-center justify-center h-12 w-12 rounded-xl bg-muted text-primary">
+        <div className="hidden sm:flex items-center justify-center h-10 w-10 md:h-12 md:w-12 rounded-lg md:rounded-xl bg-muted text-primary shrink-0">
           {icon}
         </div>
       </div>
 
       {/* Image Placeholder */}
       {imagePlaceholder && (
-        <div className="border-b border-border bg-muted/30 p-6">
-          <div className="rounded-xl border-2 border-dashed border-border bg-background/50 p-8 text-center">
-            <div className="inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-muted mb-4">
-              <Monitor className="h-8 w-8 text-muted-foreground" />
+        <div className="border-b border-border bg-muted/30 p-4 md:p-6">
+          <div className="rounded-lg md:rounded-xl border-2 border-dashed border-border bg-background/50 p-6 md:p-10 text-center transition-colors hover:border-primary/50 hover:bg-background/80">
+            <div className="inline-flex items-center justify-center h-12 w-12 md:h-16 md:w-16 rounded-xl bg-muted mb-3 md:mb-4">
+              <Monitor className="h-6 w-6 md:h-8 md:w-8 text-muted-foreground" />
             </div>
-            <p className="text-muted-foreground font-medium">{imagePlaceholder}</p>
-            <p className="text-sm text-muted-foreground mt-1">Screenshot will be added here</p>
+            <p className="text-sm md:text-base text-muted-foreground font-medium">{imagePlaceholder}</p>
+            <p className="text-xs text-muted-foreground mt-1">Screenshot will be added here</p>
           </div>
         </div>
       )}
 
       {/* Content */}
-      <div className="p-6 space-y-4">
+      <div className="p-4 md:p-6 space-y-3 md:space-y-4">
         {children}
       </div>
     </div>
@@ -98,74 +101,90 @@ const tocItems = [
 ];
 
 const SetupGuidePage = () => {
-  return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <div className="flex">
-        <DocsSidebar />
-        <div className="flex-1 flex">
-          <main className="flex-1 px-4 py-8 md:px-12 max-w-4xl">
-            <Breadcrumb
-              items={[
-                { label: "Documentation", href: "/docs" },
-                { label: "Setup Guide" },
-              ]}
-            />
+  // State to manage mobile sidebar visibility
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-            <h1 className="text-3xl font-bold text-foreground mb-4 md:text-5xl">
-              Complete Setup Guide
-            </h1>
-            <p className="text-lg text-muted-foreground mb-8">
-              Follow this step-by-step guide to set up MediaSync on your computer and start synchronizing media across all your devices.
-            </p>
+  return (
+    <div className="min-h-screen bg-background flex flex-col relative">
+      <Navbar />
+      
+      <div className="flex flex-1 w-full">
+        {/* Desktop Sidebar (Wide) */}
+        <aside className="hidden lg:block w-80 shrink-0 border-r border-border h-[calc(100vh-3.5rem)] sticky top-14 overflow-y-auto">
+          <DocsSidebar />
+        </aside>
+
+        {/* Mobile Sidebar Overlay */}
+        {mobileMenuOpen && (
+          <div className="fixed inset-0 z-50 lg:hidden">
+            {/* Backdrop */}
+            <div 
+              className="fixed inset-0 bg-background/80 backdrop-blur-sm transition-opacity"
+              onClick={() => setMobileMenuOpen(false)}
+            />
+            {/* Sidebar Panel */}
+            <div className="fixed inset-y-0 left-0 w-80 border-r border-border bg-background shadow-2xl animate-in slide-in-from-left-1/2 duration-300 flex flex-col">
+              <div className="flex items-center justify-between p-4 border-b border-border">
+                <span className="font-semibold text-foreground">Navigation</span>
+                <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(false)}>
+                  <X className="h-5 w-5" />
+                </Button>
+              </div>
+              <div className="flex-1 overflow-y-auto">
+                <DocsSidebar />
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Main Content */}
+        <div className="flex-1 flex flex-col lg:flex-row min-w-0">
+          <main className="flex-1 px-4 py-6 md:px-8 lg:px-10 lg:py-8 w-full max-w-4xl mx-auto">
+            <div className="mb-4 md:mb-6">
+              <Breadcrumb
+                items={[
+                  { label: "Documentation", href: "/docs" },
+                  { label: "Setup Guide" },
+                ]}
+              />
+            </div>
+
+            <div className="mb-8 md:mb-10">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground mb-3 md:mb-4">
+                Complete Setup Guide
+              </h1>
+              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+                Follow this step-by-step guide to set up MediaSync on your computer and start synchronizing media across all your devices.
+              </p>
+            </div>
 
             {/* Overview */}
-            <section className="mb-10" id="overview">
-              <div className="rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/30 p-6">
-                <h2 className="text-xl font-semibold text-foreground mb-4">What You'll Need</h2>
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="flex items-start gap-3">
-                    <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-primary/20 text-primary shrink-0">
-                      <Terminal className="h-5 w-5" />
+            <section className="mb-8 md:mb-10 scroll-mt-20" id="overview">
+              <div className="rounded-xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20 p-4 md:p-6">
+                <h2 className="text-lg md:text-xl font-semibold text-foreground mb-4">What You'll Need</h2>
+                <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
+                  {[
+                    { icon: Terminal, title: "Node.js", desc: "JavaScript runtime (includes npm)" },
+                    { icon: Wifi, title: "WiFi Network", desc: "Local network or mobile hotspot" },
+                    { icon: Laptop, title: "Computer", desc: "Windows, Mac, or Linux" },
+                    { icon: Smartphone, title: "Devices", desc: "Phones, tablets, laptops to sync" }
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-start gap-3 p-2 rounded-lg hover:bg-background/40 transition-colors">
+                      <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-background border border-primary/20 text-primary shrink-0 shadow-sm">
+                        <item.icon className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <h4 className="font-medium text-foreground text-sm md:text-base">{item.title}</h4>
+                        <p className="text-xs text-muted-foreground">{item.desc}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="font-medium text-foreground">Node.js</h4>
-                      <p className="text-sm text-muted-foreground">JavaScript runtime (includes npm)</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-primary/20 text-primary shrink-0">
-                      <Wifi className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-foreground">WiFi Network</h4>
-                      <p className="text-sm text-muted-foreground">Local network or mobile hotspot</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-primary/20 text-primary shrink-0">
-                      <Laptop className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-foreground">Computer</h4>
-                      <p className="text-sm text-muted-foreground">Windows, Mac, or Linux</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-primary/20 text-primary shrink-0">
-                      <Smartphone className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-foreground">Devices</h4>
-                      <p className="text-sm text-muted-foreground">Phones, tablets, laptops to sync</p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </section>
 
             {/* Step 1: Install Node.js */}
-            <section className="mb-8" id="step-1">
+            <section className="mb-8 md:mb-12 scroll-mt-20" id="step-1">
               <StepSection
                 stepNumber={1}
                 title="Install Node.js"
@@ -174,29 +193,29 @@ const SetupGuidePage = () => {
                 imagePlaceholder="Node.js download page screenshot"
               >
                 <div className="space-y-4">
-                  <p className="text-muted-foreground">
+                  <p className="text-sm md:text-base text-muted-foreground">
                     Node.js is required to run the MediaSync server. Download the LTS (Long Term Support) version from the official website.
                   </p>
                   
-                  <div className="rounded-lg bg-muted/50 p-4 border border-border">
-                    <h4 className="font-medium text-foreground mb-2">Download Link</h4>
-                    <a 
-                      href="https://nodejs.org" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-primary hover:underline"
-                    >
-                      <Globe className="h-4 w-4" />
-                      https://nodejs.org
-                    </a>
+                  <div className="rounded-lg bg-muted/50 p-4 border border-border flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div>
+                      <h4 className="font-medium text-foreground text-sm">Official Download</h4>
+                      <p className="text-xs text-muted-foreground">Get the LTS version</p>
+                    </div>
+                    <Button variant="outline" size="sm" asChild className="shrink-0 w-full sm:w-auto">
+                      <a href="https://nodejs.org" target="_blank" rel="noopener noreferrer">
+                        <Globe className="h-3.5 w-3.5 mr-2" />
+                        Visit nodejs.org
+                      </a>
+                    </Button>
                   </div>
 
                   <div className="space-y-2">
-                    <h4 className="font-medium text-foreground">Verify Installation</h4>
-                    <p className="text-sm text-muted-foreground">After installation, open a terminal and run:</p>
+                    <h4 className="font-medium text-sm text-foreground">Verify Installation</h4>
+                    <p className="text-xs md:text-sm text-muted-foreground">After installation, open a terminal and run:</p>
                     <CodeBlock language="bash">node --version</CodeBlock>
-                    <p className="text-sm text-muted-foreground mt-2">
-                      You should see a version number like <code className="bg-muted px-1.5 py-0.5 rounded">v18.17.0</code> or higher.
+                    <p className="text-xs text-muted-foreground mt-2">
+                      You should see a version number like <code className="bg-muted px-1.5 py-0.5 rounded font-mono text-foreground">v18.17.0</code> or higher.
                     </p>
                   </div>
                 </div>
@@ -204,39 +223,38 @@ const SetupGuidePage = () => {
             </section>
 
             {/* Step 2: Download Project */}
-            <section className="mb-8" id="step-2">
+            <section className="mb-8 md:mb-12 scroll-mt-20" id="step-2">
               <StepSection
                 stepNumber={2}
                 title="Download Project Files"
                 description="Get the MediaSync project files from GitHub"
                 icon={<Download className="h-6 w-6" />}
-                imagePlaceholder="GitHub repository page screenshot"
               >
                 <div className="space-y-4">
-                  <p className="text-muted-foreground">
+                  <p className="text-sm md:text-base text-muted-foreground">
                     Download the project files from GitHub. You can either clone the repository or download the ZIP file.
                   </p>
 
                   <div className="space-y-3">
-                    <h4 className="font-medium text-foreground">Option A: Clone with Git</h4>
-                    <CodeBlock language="bash">git clone https://github.com/your-username/mediasync.git</CodeBlock>
-                  </div>
-
-                  <div className="space-y-3">
-                    <h4 className="font-medium text-foreground">Option B: Download ZIP</h4>
-                    <div className="rounded-lg bg-muted/50 p-4 border border-border">
-                      <div className="flex items-center gap-3">
-                        <Github className="h-5 w-5 text-muted-foreground" />
-                        <span className="text-muted-foreground">
-                          Go to the GitHub repository → Click "Code" → "Download ZIP"
-                        </span>
+                    <div>
+                      <h4 className="font-medium text-sm text-foreground mb-1">Option A: Clone with Git</h4>
+                      <CodeBlock language="bash">git clone https://github.com/your-username/mediasync.git</CodeBlock>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-medium text-sm text-foreground mb-2">Option B: Download ZIP</h4>
+                      <div className="rounded-lg bg-muted/50 p-3 md:p-4 border border-border flex items-center gap-3">
+                          <Github className="h-5 w-5 text-foreground shrink-0" />
+                          <span className="text-xs md:text-sm text-muted-foreground">
+                            Go to repository <span className="text-muted-foreground/60 mx-1">→</span> Click "Code" <span className="text-muted-foreground/60 mx-1">→</span> "Download ZIP"
+                          </span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="rounded-lg bg-primary/10 border border-primary/20 p-4">
-                    <p className="text-sm text-muted-foreground">
-                      <strong className="text-foreground">Tip:</strong> Extract the ZIP file to a folder like <code className="bg-muted px-1.5 py-0.5 rounded">C:\MediaSync</code> or <code className="bg-muted px-1.5 py-0.5 rounded">~/MediaSync</code>
+                  <div className="rounded-lg bg-blue-500/10 border border-blue-500/20 p-3 md:p-4">
+                    <p className="text-xs md:text-sm text-blue-600 dark:text-blue-400">
+                      <strong>Tip:</strong> Extract the ZIP file to a simple folder path like <code className="bg-background/50 px-1 py-0.5 rounded text-xs font-mono">C:\MediaSync</code> or <code className="bg-background/50 px-1 py-0.5 rounded text-xs font-mono">~/MediaSync</code>
                     </p>
                   </div>
                 </div>
@@ -244,52 +262,47 @@ const SetupGuidePage = () => {
             </section>
 
             {/* Step 3: Project Structure */}
-            <section className="mb-8" id="step-3">
+            <section className="mb-8 md:mb-12 scroll-mt-20" id="step-3">
               <StepSection
                 stepNumber={3}
-                title="Understand Project Structure"
-                description="Make sure your project folder has the correct structure"
+                title="Understand Structure"
+                description="Verify your project folder contents"
                 icon={<FolderOpen className="h-6 w-6" />}
               >
                 <div className="space-y-4">
-                  <p className="text-muted-foreground">
+                  <p className="text-sm md:text-base text-muted-foreground">
                     Your project folder should contain these files and folders:
                   </p>
 
                   <CodeBlock language="text">{`mediasync/
-├── node_modules/      ← Created after npm install
-├── uploads/           ← For uploaded media files
+├── node_modules/       ← Created after npm install
+├── uploads/            ← For uploaded media files
 ├── public/
-│   ├── client.html    ← Video player page (viewers)
+│   ├── client.html     ← Video player page (viewers)
 │   └── controller.html ← Remote control page (you)
-├── config.json        ← WiFi configuration
-├── package.json       ← Project dependencies
-└── server.js          ← Main server file`}</CodeBlock>
+├── config.json         ← WiFi configuration
+├── package.json        ← Project dependencies
+└── server.js           ← Main server file`}</CodeBlock>
 
-                  <div className="grid gap-3 sm:grid-cols-2 mt-4">
-                    <div className="rounded-lg bg-muted/50 p-3 border border-border">
-                      <code className="text-sm text-primary">server.js</code>
-                      <p className="text-xs text-muted-foreground mt-1">Main Node.js server file</p>
-                    </div>
-                    <div className="rounded-lg bg-muted/50 p-3 border border-border">
-                      <code className="text-sm text-primary">public/</code>
-                      <p className="text-xs text-muted-foreground mt-1">HTML files served to browsers</p>
-                    </div>
-                    <div className="rounded-lg bg-muted/50 p-3 border border-border">
-                      <code className="text-sm text-primary">config.json</code>
-                      <p className="text-xs text-muted-foreground mt-1">WiFi credentials for QR code</p>
-                    </div>
-                    <div className="rounded-lg bg-muted/50 p-3 border border-border">
-                      <code className="text-sm text-primary">uploads/</code>
-                      <p className="text-xs text-muted-foreground mt-1">Stores uploaded media files</p>
-                    </div>
+                  <div className="grid gap-2 grid-cols-1 sm:grid-cols-2 pt-2">
+                    {[
+                      { file: "server.js", desc: "Main Node.js server file" },
+                      { file: "public/", desc: "HTML files served to browsers" },
+                      { file: "config.json", desc: "WiFi credentials for QR code" },
+                      { file: "uploads/", desc: "Stores uploaded media files" }
+                    ].map((item, i) => (
+                      <div key={i} className="rounded-lg bg-muted/30 p-2.5 border border-border">
+                        <code className="text-xs md:text-sm font-bold text-primary">{item.file}</code>
+                        <p className="text-xs text-muted-foreground mt-1">{item.desc}</p>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </StepSection>
             </section>
 
             {/* Step 4: Install Dependencies */}
-            <section className="mb-8" id="step-4">
+            <section className="mb-8 md:mb-12 scroll-mt-20" id="step-4">
               <StepSection
                 stepNumber={4}
                 title="Install Dependencies"
@@ -298,55 +311,44 @@ const SetupGuidePage = () => {
                 imagePlaceholder="Terminal showing npm install output"
               >
                 <div className="space-y-4">
-                  <p className="text-muted-foreground">
-                    Open a terminal in the project folder and run the following command:
+                  <p className="text-sm md:text-base text-muted-foreground">
+                    Open a terminal in the project folder and run:
                   </p>
 
                   <CodeBlock language="bash">npm install</CodeBlock>
 
-                  <p className="text-muted-foreground">
-                    This will install all required packages:
-                  </p>
-
-                  <div className="grid gap-2 sm:grid-cols-2">
-                    <div className="flex items-center gap-2 text-sm">
-                      <Check className="h-4 w-4 text-green-500" />
-                      <span className="text-muted-foreground"><code className="bg-muted px-1.5 py-0.5 rounded">express</code> - Web server</span>
+                  <div>
+                    <p className="text-sm text-muted-foreground mb-3">This installs:</p>
+                    <div className="grid gap-2 grid-cols-1 sm:grid-cols-2">
+                      {[
+                        { pkg: "express", desc: "Web server" },
+                        { pkg: "socket.io", desc: "Real-time sync" },
+                        { pkg: "qrcode", desc: "QR code generation" },
+                        { pkg: "multer", desc: "File uploads" }
+                      ].map((item, i) => (
+                        <div key={i} className="flex items-center gap-2 text-xs md:text-sm p-2 rounded bg-muted/30">
+                          <Check className="h-3.5 w-3.5 text-green-500 shrink-0" />
+                          <span className="font-mono font-medium">{item.pkg}</span>
+                          <span className="text-muted-foreground">- {item.desc}</span>
+                        </div>
+                      ))}
                     </div>
-                    <div className="flex items-center gap-2 text-sm">
-                      <Check className="h-4 w-4 text-green-500" />
-                      <span className="text-muted-foreground"><code className="bg-muted px-1.5 py-0.5 rounded">socket.io</code> - Real-time sync</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm">
-                      <Check className="h-4 w-4 text-green-500" />
-                      <span className="text-muted-foreground"><code className="bg-muted px-1.5 py-0.5 rounded">qrcode</code> - QR code generation</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm">
-                      <Check className="h-4 w-4 text-green-500" />
-                      <span className="text-muted-foreground"><code className="bg-muted px-1.5 py-0.5 rounded">multer</code> - File uploads</span>
-                    </div>
-                  </div>
-
-                  <div className="rounded-lg bg-yellow-500/10 border border-yellow-500/30 p-4">
-                    <p className="text-sm text-muted-foreground">
-                      <strong className="text-foreground">Note:</strong> This creates a <code className="bg-muted px-1.5 py-0.5 rounded">node_modules</code> folder with all dependencies.
-                    </p>
                   </div>
                 </div>
               </StepSection>
             </section>
 
             {/* Step 5: Configure WiFi */}
-            <section className="mb-8" id="step-5">
+            <section className="mb-8 md:mb-12 scroll-mt-20" id="step-5">
               <StepSection
                 stepNumber={5}
-                title="Configure WiFi Settings"
+                title="Configure WiFi"
                 description="Set up your WiFi credentials for the QR code"
                 icon={<Wifi className="h-6 w-6" />}
               >
                 <div className="space-y-4">
-                  <p className="text-muted-foreground">
-                    Create or edit the <code className="bg-muted px-1.5 py-0.5 rounded">config.json</code> file with your WiFi details:
+                  <p className="text-sm md:text-base text-muted-foreground">
+                    Create or edit the <code className="bg-muted px-1 py-0.5 rounded text-xs font-mono">config.json</code> file:
                   </p>
 
                   <CodeBlock language="json">{`{
@@ -355,122 +357,99 @@ const SetupGuidePage = () => {
   "HOTSPOT_IP": "192.168.1.100"
 }`}</CodeBlock>
 
-                  <div className="space-y-3 mt-4">
-                    <div className="flex items-start gap-3">
-                      <div className="flex items-center justify-center h-8 w-8 rounded-lg bg-muted text-muted-foreground shrink-0 text-sm font-medium">1</div>
-                      <div>
-                        <h4 className="font-medium text-foreground">WIFI_SSID</h4>
-                        <p className="text-sm text-muted-foreground">The name of your WiFi network or mobile hotspot</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="flex items-center justify-center h-8 w-8 rounded-lg bg-muted text-muted-foreground shrink-0 text-sm font-medium">2</div>
-                      <div>
-                        <h4 className="font-medium text-foreground">WIFI_PASSWORD</h4>
-                        <p className="text-sm text-muted-foreground">The password to connect to your network</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="flex items-center justify-center h-8 w-8 rounded-lg bg-muted text-muted-foreground shrink-0 text-sm font-medium">3</div>
-                      <div>
-                        <h4 className="font-medium text-foreground">HOTSPOT_IP</h4>
-                        <p className="text-sm text-muted-foreground">Your computer's IP address on the network (see next step)</p>
-                      </div>
-                    </div>
+                  <div className="space-y-2 mt-4">
+                      {[
+                        { key: "WIFI_SSID", desc: "The name of your WiFi network or mobile hotspot" },
+                        { key: "WIFI_PASSWORD", desc: "The password to connect to your network" },
+                        { key: "HOTSPOT_IP", desc: "Your computer's IP address (see next step)" }
+                      ].map((item, i) => (
+                        <div key={i} className="flex gap-3 text-sm">
+                          <div className="flex items-center justify-center h-5 w-5 rounded bg-muted text-muted-foreground shrink-0 text-xs font-medium mt-0.5">
+                            {i + 1}
+                          </div>
+                          <div>
+                            <h4 className="font-mono font-bold text-foreground">{item.key}</h4>
+                            <p className="text-xs text-muted-foreground">{item.desc}</p>
+                          </div>
+                        </div>
+                      ))}
                   </div>
                 </div>
               </StepSection>
             </section>
 
             {/* Step 6: Find IP Address */}
-            <section className="mb-8" id="step-6">
+            <section className="mb-8 md:mb-12 scroll-mt-20" id="step-6">
               <StepSection
                 stepNumber={6}
-                title="Find Your IP Address"
+                title="Find Your IP"
                 description="Get your computer's local IP address"
                 icon={<Monitor className="h-6 w-6" />}
-                imagePlaceholder="ipconfig command output screenshot"
               >
                 <div className="space-y-4">
-                  <p className="text-muted-foreground">
-                    You need to find your computer's IP address on the local network.
+                  <p className="text-sm md:text-base text-muted-foreground">
+                    Find your IP address to put in <code className="bg-muted px-1 py-0.5 rounded text-xs font-mono">config.json</code>.
                   </p>
 
-                  <div className="space-y-4">
+                  <div className="grid gap-4 md:grid-cols-2">
                     <div className="rounded-lg bg-card border border-border p-4">
-                      <h4 className="font-medium text-foreground mb-2 flex items-center gap-2">
-                        <Laptop className="h-4 w-4" />
-                        Windows
+                      <h4 className="font-medium text-sm text-foreground mb-2 flex items-center gap-2">
+                        <Laptop className="h-4 w-4" /> Windows
                       </h4>
                       <CodeBlock language="bash">ipconfig</CodeBlock>
-                      <p className="text-sm text-muted-foreground mt-2">
-                        Look for <strong className="text-foreground">IPv4 Address</strong> under your active network adapter.
+                      <p className="text-xs text-muted-foreground mt-2">
+                        Look for <strong>IPv4 Address</strong> under your adapter.
                       </p>
                     </div>
 
                     <div className="rounded-lg bg-card border border-border p-4">
-                      <h4 className="font-medium text-foreground mb-2 flex items-center gap-2">
-                        <Terminal className="h-4 w-4" />
-                        Mac / Linux
+                      <h4 className="font-medium text-sm text-foreground mb-2 flex items-center gap-2">
+                        <Terminal className="h-4 w-4" /> Mac / Linux
                       </h4>
                       <CodeBlock language="bash">ifconfig | grep "inet "</CodeBlock>
-                      <p className="text-sm text-muted-foreground mt-2">
-                        Look for an address starting with <code className="bg-muted px-1.5 py-0.5 rounded">192.168.x.x</code>
+                      <p className="text-xs text-muted-foreground mt-2">
+                        Look for address starting with <code className="bg-muted px-1 py-0.5 rounded">192.168.x.x</code>
                       </p>
                     </div>
-                  </div>
-
-                  <div className="rounded-lg bg-primary/10 border border-primary/20 p-4">
-                    <p className="text-sm text-muted-foreground">
-                      <strong className="text-foreground">Example:</strong> If your IP is <code className="bg-muted px-1.5 py-0.5 rounded">192.168.1.100</code>, use this in your config.json
-                    </p>
                   </div>
                 </div>
               </StepSection>
             </section>
 
             {/* Step 7: Start Server */}
-            <section className="mb-8" id="step-7">
+            <section className="mb-8 md:mb-12 scroll-mt-20" id="step-7">
               <StepSection
                 stepNumber={7}
-                title="Start the Server"
+                title="Start Server"
                 description="Run the MediaSync server"
                 icon={<Play className="h-6 w-6" />}
                 imagePlaceholder="Server running in terminal with banner"
               >
                 <div className="space-y-4">
-                  <p className="text-muted-foreground">
-                    Open a terminal in the project folder and start the server:
+                  <p className="text-sm md:text-base text-muted-foreground">
+                    Start the server in your terminal:
                   </p>
 
                   <CodeBlock language="bash">node server.js</CodeBlock>
 
-                  <p className="text-muted-foreground">
-                    You should see a banner like this:
+                  <p className="text-sm text-muted-foreground">
+                    You should see a success banner:
                   </p>
 
-                  <CodeBlock language="text">{`══════════════════════════════════════════════════════════════════════
-  MULTI-MEDIA SYNC SERVER
-══════════════════════════════════════════════════════════════════════
-  Status:       Running
+                  <CodeBlock language="text">{`  Status:       Running
   Server IP:    192.168.1.100
   Port:         8000
-
-  Controller URL: http://192.168.1.100:8000/controller.html
-  Client URL:     http://192.168.1.100:8000/client.html
-
-  Supports: YouTube Videos | Local Videos | Local Audio
-══════════════════════════════════════════════════════════════════════
+  ...
   Waiting for connections...`}</CodeBlock>
 
-                  <div className="grid gap-3 sm:grid-cols-2 mt-4">
-                    <div className="rounded-lg bg-green-500/10 border border-green-500/30 p-4">
-                      <h4 className="font-medium text-foreground mb-1">Controller URL</h4>
-                      <p className="text-sm text-muted-foreground">Open this on your phone to control playback</p>
+                  <div className="grid gap-3 sm:grid-cols-2 pt-2">
+                    <div className="rounded-lg bg-green-500/10 border border-green-500/20 p-3">
+                      <h4 className="font-medium text-sm text-green-700 dark:text-green-400 mb-1">Controller URL</h4>
+                      <p className="text-xs text-muted-foreground">For your phone (to control)</p>
                     </div>
-                    <div className="rounded-lg bg-blue-500/10 border border-blue-500/30 p-4">
-                      <h4 className="font-medium text-foreground mb-1">Client URL</h4>
-                      <p className="text-sm text-muted-foreground">Open this on viewer devices</p>
+                    <div className="rounded-lg bg-blue-500/10 border border-blue-500/20 p-3">
+                      <h4 className="font-medium text-sm text-blue-700 dark:text-blue-400 mb-1">Client URL</h4>
+                      <p className="text-xs text-muted-foreground">For viewer devices</p>
                     </div>
                   </div>
                 </div>
@@ -478,50 +457,38 @@ const SetupGuidePage = () => {
             </section>
 
             {/* Step 8: Connect Devices */}
-            <section className="mb-8" id="step-8">
+            <section className="mb-8 md:mb-12 scroll-mt-20" id="step-8">
               <StepSection
                 stepNumber={8}
-                title="Connect Your Devices"
+                title="Connect Devices"
                 description="Connect all devices and start syncing"
                 icon={<QrCode className="h-6 w-6" />}
                 imagePlaceholder="Controller page with QR codes screenshot"
               >
                 <div className="space-y-4">
                   <div className="space-y-3">
-                    <div className="flex items-start gap-3">
-                      <div className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground shrink-0 text-sm font-medium">1</div>
-                      <div>
-                        <h4 className="font-medium text-foreground">Connect to WiFi</h4>
-                        <p className="text-sm text-muted-foreground">Make sure all devices are connected to the same WiFi network</p>
+                    {[
+                      { title: "Connect to WiFi", desc: "Ensure all devices are on the same network." },
+                      { title: "Open Controller", desc: "Open the Controller URL on your phone." },
+                      { title: "Scan QR Code", desc: "Use the Controller's QR code to connect viewers." },
+                      { title: "Start Playing", desc: "Paste a YouTube link or upload a file!" }
+                    ].map((item, i) => (
+                      <div key={i} className="flex gap-3">
+                        <div className="flex items-center justify-center h-6 w-6 rounded-full bg-primary text-primary-foreground shrink-0 text-xs font-bold mt-0.5">
+                          {i + 1}
+                        </div>
+                        <div>
+                          <h4 className="font-medium text-sm text-foreground">{item.title}</h4>
+                          <p className="text-xs md:text-sm text-muted-foreground">{item.desc}</p>
+                        </div>
                       </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground shrink-0 text-sm font-medium">2</div>
-                      <div>
-                        <h4 className="font-medium text-foreground">Open Controller</h4>
-                        <p className="text-sm text-muted-foreground">On your phone, open the Controller URL in a browser</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground shrink-0 text-sm font-medium">3</div>
-                      <div>
-                        <h4 className="font-medium text-foreground">Scan QR Code</h4>
-                        <p className="text-sm text-muted-foreground">Use the QR code on the controller page to connect other devices</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground shrink-0 text-sm font-medium">4</div>
-                      <div>
-                        <h4 className="font-medium text-foreground">Start Playing</h4>
-                        <p className="text-sm text-muted-foreground">Paste a YouTube URL or upload a file, then hit Play!</p>
-                      </div>
-                    </div>
+                    ))}
                   </div>
 
-                  <div className="rounded-lg bg-green-500/10 border border-green-500/30 p-4">
-                    <p className="text-foreground font-medium">🎉 Congratulations!</p>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      All connected devices will now play, pause, and seek in perfect sync!
+                  <div className="rounded-lg bg-green-500/10 border border-green-500/20 p-4 text-center">
+                    <p className="text-sm font-medium text-green-700 dark:text-green-400">🎉 Ready to Sync!</p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      All connected devices will now play in perfect harmony.
                     </p>
                   </div>
                 </div>
@@ -530,43 +497,49 @@ const SetupGuidePage = () => {
 
             {/* What's Next */}
             <section className="mb-10" id="whats-next">
-              <div className="rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/30 p-6">
+              <div className="rounded-xl bg-gradient-to-br from-muted to-transparent border border-border p-4 md:p-6">
                 <h2 className="text-xl font-semibold text-foreground mb-4">What's Next?</h2>
-                <div className="space-y-3">
-                  <a href="/docs/usage" className="flex items-center gap-3 p-3 rounded-lg bg-background/50 hover:bg-background transition-colors group">
-                    <Play className="h-5 w-5 text-primary" />
-                    <div>
-                      <h4 className="font-medium text-foreground group-hover:text-primary transition-colors">Learn How to Use</h4>
-                      <p className="text-sm text-muted-foreground">Detailed usage guide for all features</p>
-                    </div>
-                  </a>
-                  <a href="/docs/troubleshooting" className="flex items-center gap-3 p-3 rounded-lg bg-background/50 hover:bg-background transition-colors group">
-                    <Monitor className="h-5 w-5 text-primary" />
-                    <div>
-                      <h4 className="font-medium text-foreground group-hover:text-primary transition-colors">Troubleshooting</h4>
-                      <p className="text-sm text-muted-foreground">Fix common issues</p>
-                    </div>
-                  </a>
-                  <a href="/docs/faq" className="flex items-center gap-3 p-3 rounded-lg bg-background/50 hover:bg-background transition-colors group">
-                    <Terminal className="h-5 w-5 text-primary" />
-                    <div>
-                      <h4 className="font-medium text-foreground group-hover:text-primary transition-colors">FAQ</h4>
-                      <p className="text-sm text-muted-foreground">Frequently asked questions</p>
-                    </div>
-                  </a>
+                <div className="grid gap-3 sm:grid-cols-3">
+                  {[
+                    { title: "Learn Usage", icon: Play, href: "/docs/usage", desc: "Detailed guide" },
+                    { title: "Troubleshoot", icon: Monitor, href: "/docs/troubleshooting", desc: "Fix issues" },
+                    { title: "FAQ", icon: Terminal, href: "/docs/faq", desc: "Common questions" },
+                  ].map((item, i) => (
+                    <a key={i} href={item.href} className="flex flex-col p-4 rounded-lg bg-background border border-border/50 hover:border-primary/50 transition-all group">
+                      <div className="mb-3 p-2 w-fit rounded-md bg-primary/10 text-primary group-hover:scale-110 transition-transform">
+                        <item.icon className="h-5 w-5" />
+                      </div>
+                      <h4 className="font-medium text-sm text-foreground group-hover:text-primary transition-colors">{item.title}</h4>
+                      <p className="text-xs text-muted-foreground mt-1">{item.desc}</p>
+                    </a>
+                  ))}
                 </div>
               </div>
             </section>
 
             <DocNavigation
-              previous={{ title: "Documentation", href: "/docs" }}
-              next={{ title: "How to Use", href: "/docs/usage" }}
+              previous={{ title: "Installation", href: "/docs/getting-started/installation" }}
+              next={{ title: "Network Requirements", href: "/docs/getting-started/network" }}
             />
           </main>
-          <TableOfContents items={tocItems} />
+
+          {/* Table of Contents - Hidden on mobile/tablet, visible on large screens */}
+          <div className="hidden xl:block w-64 shrink-0 border-l border-border h-[calc(100vh-3.5rem)] sticky top-14 p-6">
+            <TableOfContents items={tocItems} />
+          </div>
         </div>
       </div>
       <Footer />
+
+      {/* Floating Action Button (Mobile Only) */}
+      <Button
+        size="icon"
+        className="fixed bottom-8 right-8 h-14 w-14 rounded-full shadow-2xl z-40 lg:hidden bg-blue-600 hover:bg-blue-700 text-white"
+        onClick={() => setMobileMenuOpen(true)}
+      >
+        <Menu className="h-6 w-6" />
+        <span className="sr-only">Open Menu</span>
+      </Button>
     </div>
   );
 };

@@ -20,7 +20,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative z-10 bg-background pt-20 pb-10 overflow-hidden border-t border-border/40">
+    <footer className="relative z-10 bg-background pt-10 md:pt-20 pb-24 md:pb-10 overflow-hidden border-t border-border/40">
       
       {/* --- Visual Effects --- */}
       {/* Top Gradient Line */}
@@ -30,25 +30,25 @@ export function Footer() {
       <div className="absolute -top-[200px] -left-[200px] w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="container px-4 relative mx-auto">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
+      <div className="container px-4 sm:px-6 relative mx-auto">
+        <div className="grid gap-8 sm:gap-10 md:gap-12 lg:grid-cols-12 lg:gap-8">
           
           {/* 1. Brand Section */}
-          <div className="lg:col-span-5 flex flex-col items-start">
-            <Link to="/" className="inline-flex items-center gap-3 mb-6 group">
-                <img src="/logo.webp" alt="MediaSync" className="h-12 w-12" />
-              <span className="text-2xl font-bold tracking-tight text-foreground">
+          <div className="lg:col-span-5 flex flex-col items-center sm:items-start text-center sm:text-left">
+            <Link to="/" className="inline-flex items-center gap-2 md:gap-3 mb-4 md:mb-6 group">
+                <img src="/logo.webp" alt="MediaSync" className="h-9 w-9 md:h-12 md:w-12" />
+              <span className="text-xl md:text-2xl font-bold tracking-tight text-foreground">
                 MediaSync
               </span>
             </Link>
             
-            <p className="text-muted-foreground leading-relaxed mb-8 max-w-sm text-base">
+            <p className="text-muted-foreground leading-relaxed mb-5 md:mb-8 max-w-sm text-sm md:text-base">
               A self-hosted Node.js server for real-time media synchronization. 
               Simple, secure, and built for high-performance streaming.
             </p>
 
             {/* Social Links */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center sm:justify-start gap-2 md:gap-3">
               <SocialLink 
                 href="https://github.com/Patel-Priyank-1602" 
                 icon={<Github className="h-5 w-5" />} 
@@ -73,12 +73,12 @@ export function Footer() {
           </div>
 
           {/* 2. Navigation Columns */}
-          <div className="lg:col-span-4 grid grid-cols-2 gap-8">
+          <div className="lg:col-span-4 grid grid-cols-2 gap-6 md:gap-8">
             <div>
-              <h3 className="font-semibold text-foreground mb-6 text-sm uppercase tracking-wider">
+              <h3 className="font-semibold text-foreground mb-4 md:mb-6 text-xs md:text-sm uppercase tracking-wider">
                 Documentation
               </h3>
-              <ul className="space-y-4">
+              <ul className="space-y-3 md:space-y-4">
                 <FooterLink to="/docs/setup">Installation</FooterLink>
                 <FooterLink to="/docs/usage">How to Use</FooterLink>
                 <FooterLink to="/docs/config">Configuration</FooterLink>
@@ -88,10 +88,10 @@ export function Footer() {
             </div>
 
             <div>
-              <h3 className="font-semibold text-foreground mb-6 text-sm uppercase tracking-wider">
+              <h3 className="font-semibold text-foreground mb-4 md:mb-6 text-xs md:text-sm uppercase tracking-wider">
                 Features
               </h3>
-              <ul className="space-y-4">
+              <ul className="space-y-3 md:space-y-4">
                 <FooterLink to="/features/youtube">YouTube Sync</FooterLink>
                 <FooterLink to="/features/local">Local Media</FooterLink>
                 <FooterLink to="/features/qr">QR Access</FooterLink>
@@ -102,11 +102,11 @@ export function Footer() {
 
           {/* 3. Call to Action Card */}
           <div className="lg:col-span-3">
-            <div className="rounded-2xl border border-border/50 bg-card p-6 shadow-sm">
-              <h3 className="font-semibold text-foreground mb-2">
+            <div className="rounded-xl md:rounded-2xl border border-border/50 bg-card p-4 md:p-6 shadow-sm">
+              <h3 className="font-semibold text-foreground mb-1.5 md:mb-2 text-sm md:text-base">
                 Ready to Sync?
               </h3>
-              <p className="text-sm text-muted-foreground mb-6">
+              <p className="text-xs md:text-sm text-muted-foreground mb-4 md:mb-6">
                 Get your server running in less than 5 minutes.
               </p>
               
@@ -134,8 +134,8 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-16 pt-8 border-t border-border/40 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-muted-foreground text-center md:text-left">
+        <div className="mt-8 md:mt-16 pt-6 md:pt-8 border-t border-border/40 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4">
+          <p className="text-xs md:text-sm text-muted-foreground text-center md:text-left">
             © {currentYear} Priyank Patel. All rights reserved.
           </p>
           
@@ -163,7 +163,7 @@ function FooterLink({ to, children }: { to: string; children: React.ReactNode })
     <li>
       <Link 
         to={to} 
-        className="group flex items-center gap-2 text-sm text-muted-foreground transition-all duration-200 hover:text-primary hover:translate-x-1"
+        className="group flex items-center gap-1.5 md:gap-2 text-xs md:text-sm text-muted-foreground transition-all duration-200 hover:text-primary hover:translate-x-1"
       >
         <span className="h-1.5 w-1.5 rounded-full bg-primary/0 transition-all duration-200 group-hover:bg-primary" />
         {children}
@@ -179,7 +179,7 @@ function SocialLink({ href, icon, label }: { href: string; icon: React.ReactNode
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="flex h-10 w-10 items-center justify-center rounded-lg border border-border/50 bg-background text-muted-foreground transition-all duration-300 hover:border-primary/50 hover:text-primary hover:bg-primary/5 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10"
+      className="flex h-9 w-9 md:h-10 md:w-10 items-center justify-center rounded-lg border border-border/50 bg-background text-muted-foreground transition-all duration-300 hover:border-primary/50 hover:text-primary hover:bg-primary/5 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 [&_svg]:h-4 [&_svg]:w-4 md:[&_svg]:h-5 md:[&_svg]:w-5"
     >
       {icon}
     </a>

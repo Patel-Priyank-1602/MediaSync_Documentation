@@ -3,6 +3,7 @@ import { DocsSidebar } from "@/components/layout/DocsSidebar";
 import { Breadcrumb } from "@/components/docs/Breadcrumb";
 import { TableOfContents } from "@/components/docs/TableOfContents";
 import { DocNavigation } from "@/components/docs/DocNavigation";
+import { Footer } from "@/components/layout/Footer";
 import { Copy, Check, Video, FileVideo, Music } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -17,8 +18,8 @@ const CodeBlock = ({ children, language = "bash" }: { children: string; language
   };
 
   return (
-    <div className="relative group rounded-lg bg-[#0d0d0d] border border-border overflow-hidden">
-      <div className="flex items-center justify-between px-4 py-2 border-b border-border bg-muted/30">
+    <div className="relative group rounded-lg bg-muted dark:bg-[#0d0d0d] border border-border overflow-hidden">
+      <div className="flex items-center justify-between px-4 py-2 border-b border-border bg-muted/50 dark:bg-muted/30">
         <span className="text-xs text-muted-foreground">{language}</span>
         <Button
           variant="ghost"
@@ -49,19 +50,18 @@ const UsagePage = () => {
       <Navbar />
       <div className="flex">
         <DocsSidebar />
-        <main className="flex-1 overflow-y-auto">
-          <div className="flex">
-            <div className="container max-w-5xl px-4 py-8 md:px-12">
-              <Breadcrumb
-                items={[
-                  { label: "Documentation", href: "/docs" },
-                  { label: "How to Use" },
-                ]}
-              />
+        <div className="flex-1 flex">
+          <main className="flex-1 px-4 py-8 md:px-12 max-w-4xl">
+            <Breadcrumb
+              items={[
+                { label: "Documentation", href: "/docs" },
+                { label: "How to Use" },
+              ]}
+            />
 
-              <h1 className="text-3xl font-bold text-foreground mb-6 md:text-5xl">
-                How to Use
-              </h1>
+            <h1 className="text-3xl font-bold text-foreground mb-6 md:text-5xl">
+              How to Use
+            </h1>
 
               {/* Step 1: Start Server */}
               <section className="mb-10" id="start-server">
@@ -168,16 +168,16 @@ const UsagePage = () => {
               </section>
 
               <DocNavigation
-                previous={{ title: "Network Requirements", href: "/docs/getting-started/network" }}
-                next={{ title: "Joining as a Client", href: "/docs/usage/client" }}
+                previous={{ title: "Installation & Setup", href: "/docs/setup" }}
+                next={{ title: "Troubleshooting", href: "/docs/troubleshooting" }}
               />
-            </div>
+            </main>
             <TableOfContents items={tocItems} />
           </div>
-        </main>
+        </div>
+        <Footer />
       </div>
-    </div>
-  );
-};
-
-export default UsagePage;
+    );
+  };
+  
+  export default UsagePage;

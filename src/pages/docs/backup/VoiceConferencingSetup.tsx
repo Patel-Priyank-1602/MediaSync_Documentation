@@ -10,7 +10,7 @@ const VoiceConferencingSetup = () => {
       <div className="flex">
         <DocsSidebar />
         <main className="flex-1 overflow-y-auto">
-          <div className="container max-w-5xl px-6 py-8 md:px-12">
+          <div className="container max-w-4xl px-6 py-8 md:px-12">
             <Breadcrumb
               items={[
                 { label: "Guides", href: "/docs" },

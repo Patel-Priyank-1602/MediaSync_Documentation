@@ -17,7 +17,7 @@ export function Navbar() {
   const isDocsPage = location.pathname.startsWith("/docs");
   const isHomePage = location.pathname === "/";
 
-  const docsNavItems = [{ label: "Setup", href: "/docs/setup-guide" }];
+  const docsNavItems = [{ label: "Setup", href: "/docs/setup" }];
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 20);

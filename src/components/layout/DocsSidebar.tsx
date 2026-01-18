@@ -7,8 +7,17 @@ import {
   Music,
   QrCode,
   AlertTriangle,
-  FileCode,
+  Map,
   Menu,
+  FileText,
+  Users,
+  HelpCircle,
+  Brain,
+  Wrench,
+  LayoutDashboard,
+  Sparkles,
+  Gamepad2,
+  Rocket,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Link, useLocation } from "react-router-dom";
@@ -23,34 +32,92 @@ interface SidebarItem {
 
 const sidebarItems: SidebarItem[] = [
   {
+    title: "Introduction",
+    icon: <Rocket className="h-4 w-4" />,
+    children: [
+      { title: "Overview", href: "/docs/introduction/overview" },
+      { title: "Architecture & Flow", href: "/docs/introduction/architecture" },
+      { title: "Use Cases", href: "/docs/introduction/use-cases" },
+    ],
+  },
+  {
     title: "Getting Started",
     icon: <Settings className="h-4 w-4" />,
     children: [
-      { title: "Installation & Setup", href: "/docs/setup" },
-      { title: "How to Use", href: "/docs/usage" },
+      { title: "System Requirements", href: "/docs/getting-started/requirements" },
+      { title: "Installation", href: "/docs/getting-started/installation" },
+      { title: "First-Time Setup", href: "/docs/setup" },
+      { title: "Network Requirements", href: "/docs/getting-started/network" },
+    ],
+  },
+  {
+    title: "Usage Guide",
+    icon: <Gamepad2 className="h-4 w-4" />,
+    children: [
+      { title: "Controller Dashboard", href: "/docs/usage" },
+      { title: "Joining as a Client", href: "/docs/usage/client" },
+      { title: "Playback Controls", href: "/docs/usage/playback" },
+      { title: "Host vs Client Behavior", href: "/docs/usage/host-vs-client" },
     ],
   },
   {
     title: "Features",
-    icon: <Video className="h-4 w-4" />,
+    icon: <Sparkles className="h-4 w-4" />,
     children: [
-      { title: "YouTube Sync", href: "/docs/features/youtube" },
-      { title: "Local Media", href: "/docs/features/local-media" },
-      { title: "QR Code Access", href: "/docs/features/qr-codes" },
-      { title: "Status Dashboard", href: "/docs/features/dashboard" },
+      { title: "YouTube Synchronization", href: "/docs/features/youtube" },
+      { title: "Local Video Sync", href: "/docs/features/local-video" },
+      { title: "Local Audio Sync", href: "/docs/features/local-audio" },
+      { title: "Real-Time Seek & Drift", href: "/docs/features/seek-drift" },
+      { title: "QR Code Device Join", href: "/docs/features/qr-codes" },
+      { title: "Multi-Client Handling", href: "/docs/features/multi-client" },
+    ],
+  },
+  {
+    title: "Dashboard",
+    icon: <LayoutDashboard className="h-4 w-4" />,
+    children: [
+      { title: "Live Client Status", href: "/docs/dashboard/client-status" },
+      { title: "Playback State Monitor", href: "/docs/dashboard/playback-state" },
+      { title: "Sync Health Indicators", href: "/docs/dashboard/sync-health" },
     ],
   },
   {
     title: "Configuration",
-    icon: <FileCode className="h-4 w-4" />,
-    children: [{ title: "config.json", href: "/docs/config" }],
+    icon: <Wrench className="h-4 w-4" />,
+    children: [
+      { title: "config.json Overview", href: "/docs/config" },
+      { title: "All Configuration Options", href: "/docs/config/options" },
+      { title: "Performance Tuning", href: "/docs/config/performance" },
+      { title: "Security Settings", href: "/docs/config/security" },
+    ],
   },
   {
-    title: "Help",
+    title: "Internals (Advanced)",
+    icon: <Brain className="h-4 w-4" />,
+    children: [
+      { title: "WebSocket Sync Logic", href: "/docs/internals/websocket" },
+      { title: "Time Drift Handling", href: "/docs/internals/drift" },
+      { title: "Event Broadcasting Model", href: "/docs/internals/events" },
+      { title: "Latency Optimization", href: "/docs/internals/latency" },
+    ],
+  },
+  {
+    title: "Troubleshooting",
     icon: <AlertTriangle className="h-4 w-4" />,
     children: [
-      { title: "Troubleshooting", href: "/docs/troubleshooting" },
-      { title: "FAQ", href: "/docs/faq" },
+      { title: "Common Errors", href: "/docs/troubleshooting" },
+      { title: "Sync Delay Issues", href: "/docs/troubleshooting/sync-delay" },
+      { title: "Media Loading Failures", href: "/docs/troubleshooting/media-loading" },
+      { title: "Network Problems", href: "/docs/troubleshooting/network" },
+    ],
+  },
+  {
+    title: "FAQ",
+    icon: <HelpCircle className="h-4 w-4" />,
+    children: [
+      { title: "Supported Devices", href: "/docs/faq" },
+      { title: "Media Size Limits", href: "/docs/faq/media-limits" },
+      { title: "Browser Compatibility", href: "/docs/faq/browsers" },
     ],
   },
 ];
@@ -153,7 +220,7 @@ export function DocsSidebar() {
       <Button
         variant="ghost"
         size="icon"
-        className="fixed bottom-4 left-4 z-50 md:hidden rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700"
+        className="fixed bottom-20 right-4 z-50 md:hidden h-12 w-12 rounded-full bg-primary text-primary-foreground shadow-lg shadow-primary/30 hover:bg-primary/90 active:scale-95 transition-all"
         onClick={() => setIsMobileOpen(true)}
       >
         <Menu className="h-5 w-5" />

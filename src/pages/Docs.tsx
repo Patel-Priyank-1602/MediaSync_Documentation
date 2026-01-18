@@ -109,7 +109,7 @@ const DocsPage = () => {
             </section>
 
             <DocNavigation
-              next={{ title: "Installation & Setup", href: "/docs/setup" }}
+              next={{ title: "Overview", href: "/docs/introduction/overview" }}
             />
           </div>
         </main>
