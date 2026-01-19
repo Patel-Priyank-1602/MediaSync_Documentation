@@ -89,14 +89,14 @@ const AboutMe = () => {
             <div className="flex items-center gap-2">
               {/* Desktop Back Home Button */}
               <Button variant="outline" size="sm" asChild className="hidden sm:flex h-9">
-                <Link to="/docs/introduction">
+                <Link to="/docs">
                   <ArrowLeft className="h-4 w-4 mr-2" />
                   Back Home
                 </Link>
               </Button>
               {/* Mobile Back Home Button */}
               <Button variant="outline" size="icon" asChild className="flex sm:hidden h-9 w-9">
-                <Link to="/docs/introduction">
+                <Link to="/docs">
                   <ArrowLeft className="h-4 w-4" />
                   <span className="sr-only">Back Home</span>
                 </Link>
