@@ -58,20 +58,6 @@ import FAQDevices from "./pages/docs/FAQDevices";
 import FAQMediaLimits from "./pages/docs/FAQMediaLimits";
 import FAQBrowsers from "./pages/docs/FAQBrowsers";
 
-// Roadmap
-import RoadmapFeatures from "./pages/docs/RoadmapFeatures";
-import RoadmapLimitations from "./pages/docs/RoadmapLimitations";
-import RoadmapContributing from "./pages/docs/RoadmapContributing";
-
-// Contributing
-import ContributingStructure from "./pages/docs/ContributingStructure";
-import ContributingStandards from "./pages/docs/ContributingStandards";
-import ContributingPR from "./pages/docs/ContributingPR";
-
-// Legal
-import LegalLicense from "./pages/docs/LegalLicense";
-import LegalCredits from "./pages/docs/LegalCredits";
-
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -132,20 +118,6 @@ const App = () => (
           <Route path="/docs/faq/devices" element={<FAQDevices />} />
           <Route path="/docs/faq/media-limits" element={<FAQMediaLimits />} />
           <Route path="/docs/faq/browsers" element={<FAQBrowsers />} />
-          
-          {/* Roadmap */}
-          <Route path="/docs/roadmap/features" element={<RoadmapFeatures />} />
-          <Route path="/docs/roadmap/limitations" element={<RoadmapLimitations />} />
-          <Route path="/docs/roadmap/contributing" element={<RoadmapContributing />} />
-          
-          {/* Contributing */}
-          <Route path="/docs/contributing/structure" element={<ContributingStructure />} />
-          <Route path="/docs/contributing/standards" element={<ContributingStandards />} />
-          <Route path="/docs/contributing/pr" element={<ContributingPR />} />
-          
-          {/* Legal */}
-          <Route path="/docs/legal/license" element={<LegalLicense />} />
-          <Route path="/docs/legal/credits" element={<LegalCredits />} />
           
           {/* Other pages */}
           <Route path="/about" element={<AboutPage />} />
