@@ -12,7 +12,6 @@ import {
   FileText,
   Users,
   HelpCircle,
-  Brain,
   Wrench,
   LayoutDashboard,
   Sparkles,
@@ -46,7 +45,7 @@ const sidebarItems: SidebarItem[] = [
     children: [
       { title: "System Requirements", href: "/docs/getting-started/requirements" },
       { title: "Installation", href: "/docs/getting-started/installation" },
-      { title: "First-Time Setup", href: "/docs/setup" },
+      { title: "First-Time Setup", href: "/docs/getting-started/setup" },
       { title: "Network Requirements", href: "/docs/getting-started/network" },
     ],
   },
@@ -54,10 +53,10 @@ const sidebarItems: SidebarItem[] = [
     title: "Usage Guide",
     icon: <Gamepad2 className="h-4 w-4" />,
     children: [
-      { title: "Controller Dashboard", href: "/docs/usage" },
-      { title: "Joining as a Client", href: "/docs/usage/client" },
+      { title: "Controller Dashboard", href: "/docs/usage/controller" },
+      { title: "Joining as a Client", href: "/docs/usage/joining" },
       { title: "Playback Controls", href: "/docs/usage/playback" },
-      { title: "Host vs Client Behavior", href: "/docs/usage/host-vs-client" },
+      { title: "Host vs Client Behavior", href: "/docs/usage/host-client" },
     ],
   },
   {
@@ -68,7 +67,7 @@ const sidebarItems: SidebarItem[] = [
       { title: "Local Video Sync", href: "/docs/features/local-video" },
       { title: "Local Audio Sync", href: "/docs/features/local-audio" },
       { title: "Real-Time Seek & Drift", href: "/docs/features/seek-drift" },
-      { title: "QR Code Device Join", href: "/docs/features/qr-codes" },
+      { title: "QR Code Device Join", href: "/docs/features/qr-code" },
       { title: "Multi-Client Handling", href: "/docs/features/multi-client" },
     ],
   },
@@ -76,8 +75,8 @@ const sidebarItems: SidebarItem[] = [
     title: "Dashboard",
     icon: <LayoutDashboard className="h-4 w-4" />,
     children: [
-      { title: "Live Client Status", href: "/docs/dashboard/client-status" },
-      { title: "Playback State Monitor", href: "/docs/dashboard/playback-state" },
+      { title: "Live Client Status", href: "/docs/dashboard/status" },
+      { title: "Playback State Monitor", href: "/docs/dashboard/playback" },
       { title: "Sync Health Indicators", href: "/docs/dashboard/sync-health" },
     ],
   },
@@ -85,29 +84,20 @@ const sidebarItems: SidebarItem[] = [
     title: "Configuration",
     icon: <Wrench className="h-4 w-4" />,
     children: [
-      { title: "config.json Overview", href: "/docs/config" },
+      { title: "config.json Overview", href: "/docs/config/overview" },
       { title: "All Configuration Options", href: "/docs/config/options" },
       { title: "Performance Tuning", href: "/docs/config/performance" },
       { title: "Security Settings", href: "/docs/config/security" },
     ],
   },
-  {
-    title: "Internals (Advanced)",
-    icon: <Brain className="h-4 w-4" />,
-    children: [
-      { title: "WebSocket Sync Logic", href: "/docs/internals/websocket" },
-      { title: "Time Drift Handling", href: "/docs/internals/drift" },
-      { title: "Event Broadcasting Model", href: "/docs/internals/events" },
-      { title: "Latency Optimization", href: "/docs/internals/latency" },
-    ],
-  },
+
   {
     title: "Troubleshooting",
     icon: <AlertTriangle className="h-4 w-4" />,
     children: [
-      { title: "Common Errors", href: "/docs/troubleshooting" },
+      { title: "Common Errors", href: "/docs/troubleshooting/errors" },
       { title: "Sync Delay Issues", href: "/docs/troubleshooting/sync-delay" },
-      { title: "Media Loading Failures", href: "/docs/troubleshooting/media-loading" },
+      { title: "Media Loading Failures", href: "/docs/troubleshooting/media" },
       { title: "Network Problems", href: "/docs/troubleshooting/network" },
     ],
   },
@@ -115,7 +105,7 @@ const sidebarItems: SidebarItem[] = [
     title: "FAQ",
     icon: <HelpCircle className="h-4 w-4" />,
     children: [
-      { title: "Supported Devices", href: "/docs/faq" },
+      { title: "Supported Devices", href: "/docs/faq/devices" },
       { title: "Media Size Limits", href: "/docs/faq/media-limits" },
       { title: "Browser Compatibility", href: "/docs/faq/browsers" },
     ],

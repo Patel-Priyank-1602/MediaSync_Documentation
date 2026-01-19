@@ -33,13 +33,13 @@ const DocsPage = () => {
                   icon={<Settings className="h-6 w-6" />}
                   title="Installation & Setup"
                   description="Step-by-step guide to install dependencies and configure your server."
-                  href="/docs/setup"
+                  href="/docs/getting-started/installation"
                 />
                 <DocCard
                   icon={<Terminal className="h-6 w-6" />}
                   title="How to Use"
                   description="Learn how to start the server and connect devices."
-                  href="/docs/usage"
+                  href="/docs/usage/controller"
                 />
               </div>
             </section>
@@ -62,19 +62,19 @@ const DocsPage = () => {
                   icon={<Music className="h-6 w-6" />}
                   title="Local Media"
                   description="Upload and sync local video and audio files."
-                  href="/docs/features/local-media"
+                  href="/docs/features/local-video"
                 />
                 <DocCard
                   icon={<Smartphone className="h-6 w-6" />}
                   title="QR Code Access"
                   description="Generate QR codes for easy WiFi and page access."
-                  href="/docs/features/qr-codes"
+                  href="/docs/features/qr-code"
                 />
                 <DocCard
                   icon={<Wifi className="h-6 w-6" />}
                   title="Status Dashboard"
                   description="Monitor connected clients in real-time."
-                  href="/docs/features/dashboard"
+                  href="/docs/dashboard/status"
                 />
               </div>
             </section>
@@ -91,19 +91,19 @@ const DocsPage = () => {
                   icon={<FileCode className="h-6 w-6" />}
                   title="config.json"
                   description="Configure WiFi credentials and server settings."
-                  href="/docs/config"
+                  href="/docs/config/overview"
                 />
                 <DocCard
                   icon={<AlertTriangle className="h-6 w-6" />}
                   title="Troubleshooting"
                   description="Common issues and how to fix them."
-                  href="/docs/troubleshooting"
+                  href="/docs/troubleshooting/errors"
                 />
                 <DocCard
                   icon={<HelpCircle className="h-6 w-6" />}
                   title="FAQ"
                   description="Frequently asked questions about MediaSync."
-                  href="/docs/faq"
+                  href="/docs/faq/devices"
                 />
               </div>
             </section>

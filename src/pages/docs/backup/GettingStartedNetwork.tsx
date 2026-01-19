@@ -5,7 +5,6 @@ import { TableOfContents } from "@/components/docs/TableOfContents";
 import { DocNavigation } from "@/components/docs/DocNavigation";
 import { Copy, Check } from "lucide-react";
 import { useState } from "react";
-import { Footer } from "@/components/layout/Footer";
 
 const tocItems = [
   { id: "finding-ip", title: "Finding Your IP Address", level: 2 },
@@ -48,7 +47,7 @@ const GettingStartedNetwork = () => {
       <div className="flex">
         <DocsSidebar />
         <main className="flex-1 overflow-y-auto">
-          <div className="container max-w-4xl px-4 py-8 md:px-12">
+          <div className="container max-w-5xl px-4 py-8 md:px-12">
             <Breadcrumb
               items={[
                 { label: "Documentation", href: "/docs" },
@@ -182,14 +181,13 @@ const GettingStartedNetwork = () => {
                 </section>
 
                 <DocNavigation
-                  previous={{ title: "First-Time Setup", href: "/docs/getting-started/setup" }}
-                  next={{ title: "Controller Dashboard", href: "/docs/usage/controller" }}
+                  previous={{ title: "First-Time Setup", href: "/docs/setup" }}
+                  next={{ title: "Controller Dashboard", href: "/docs/usage" }}
                 />
               </div>
               <TableOfContents items={tocItems} />
             </div>
           </div>
-          <Footer />
         </main>
       </div>
     </div>

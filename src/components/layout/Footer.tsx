@@ -79,11 +79,11 @@ export function Footer() {
                 Documentation
               </h3>
               <ul className="space-y-3 md:space-y-4">
-                <FooterLink to="/docs/setup">Installation</FooterLink>
-                <FooterLink to="/docs/usage">How to Use</FooterLink>
-                <FooterLink to="/docs/config">Configuration</FooterLink>
-                <FooterLink to="/docs/troubleshooting">Troubleshooting</FooterLink>
-                <FooterLink to="/docs/faq">FAQ</FooterLink>
+                <FooterLink to="/docs/getting-started/installation">Installation</FooterLink>
+                <FooterLink to="/docs/usage/controller">How to Use</FooterLink>
+                <FooterLink to="/docs/config/overview">Configuration</FooterLink>
+                <FooterLink to="/docs/troubleshooting/errors">Troubleshooting</FooterLink>
+                <FooterLink to="/docs/faq/devices">FAQ</FooterLink>
               </ul>
             </div>
 
@@ -92,10 +92,10 @@ export function Footer() {
                 Features
               </h3>
               <ul className="space-y-3 md:space-y-4">
-                <FooterLink to="/features/youtube">YouTube Sync</FooterLink>
-                <FooterLink to="/features/local">Local Media</FooterLink>
-                <FooterLink to="/features/qr">QR Access</FooterLink>
-                <FooterLink to="/features/dashboard">Dashboard</FooterLink>
+                <FooterLink to="/docs/features/youtube">YouTube Sync</FooterLink>
+                <FooterLink to="/docs/features/local-video">Local Media</FooterLink>
+                <FooterLink to="/docs/features/qr-code">QR Access</FooterLink>
+                <FooterLink to="/docs/dashboard/status">Dashboard</FooterLink>
               </ul>
             </div>
           </div>
@@ -115,7 +115,7 @@ export function Footer() {
                   asChild 
                   className="w-full shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all duration-300"
                 >
-                  <Link to="/docs/setup-guide">
+                  <Link to="/docs/getting-started/installation">
                     <Download className="h-4 w-4 mr-2" />
                     Start Setup
                   </Link>

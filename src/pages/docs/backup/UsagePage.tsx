@@ -2,6 +2,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { DocsSidebar } from "@/components/layout/DocsSidebar";
 import { Breadcrumb } from "@/components/docs/Breadcrumb";
 import { TableOfContents } from "@/components/docs/TableOfContents";
+import { DocNavigation } from "@/components/docs/DocNavigation";
 import { Copy, Check, Video, FileVideo, Music } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -50,7 +51,7 @@ const UsagePage = () => {
         <DocsSidebar />
         <main className="flex-1 overflow-y-auto">
           <div className="flex">
-            <div className="container max-w-4xl px-4 py-8 md:px-12">
+            <div className="container max-w-5xl px-4 py-8 md:px-12">
               <Breadcrumb
                 items={[
                   { label: "Documentation", href: "/docs" },
@@ -165,6 +166,11 @@ const UsagePage = () => {
                   </div>
                 </div>
               </section>
+
+              <DocNavigation
+                previous={{ title: "Network Requirements", href: "/docs/getting-started/network" }}
+                next={{ title: "Joining as a Client", href: "/docs/usage/client" }}
+              />
             </div>
             <TableOfContents items={tocItems} />
           </div>

@@ -4,7 +4,6 @@ import { Breadcrumb } from "@/components/docs/Breadcrumb";
 import { TableOfContents } from "@/components/docs/TableOfContents";
 import { DocNavigation } from "@/components/docs/DocNavigation";
 import { Video, Music, QrCode, Users, Zap, Wifi } from "lucide-react";
-import { Footer } from "@/components/layout/Footer";
 
 const tocItems = [
   { id: "what-is", title: "What is Media Sync Server?", level: 2 },
@@ -20,7 +19,7 @@ const IntroductionOverview = () => {
       <div className="flex">
         <DocsSidebar />
         <main className="flex-1 overflow-y-auto">
-          <div className="container max-w-4xl px-4 py-8 md:px-12">
+          <div className="container max-w-5xl px-4 py-8 md:px-12">
             <Breadcrumb
               items={[
                 { label: "Documentation", href: "/docs" },
@@ -195,13 +194,13 @@ const IntroductionOverview = () => {
                 </section>
 
                 <DocNavigation
+                  previous={{ title: "Documentation", href: "/docs" }}
                   next={{ title: "Architecture & Flow", href: "/docs/introduction/architecture" }}
                 />
               </div>
               <TableOfContents items={tocItems} />
             </div>
           </div>
-          <Footer />
         </main>
       </div>
     </div>

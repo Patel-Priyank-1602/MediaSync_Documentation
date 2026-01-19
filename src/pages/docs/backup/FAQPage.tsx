@@ -2,6 +2,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { DocsSidebar } from "@/components/layout/DocsSidebar";
 import { Breadcrumb } from "@/components/docs/Breadcrumb";
 import { TableOfContents } from "@/components/docs/TableOfContents";
+import { DocNavigation } from "@/components/docs/DocNavigation";
 import {
   Accordion,
   AccordionContent,
@@ -76,7 +77,7 @@ const FAQPage = () => {
         <DocsSidebar />
         <main className="flex-1 overflow-y-auto">
           <div className="flex">
-            <div className="container max-w-4xl px-4 py-8 md:px-12">
+            <div className="container max-w-5xl px-4 py-8 md:px-12">
               <Breadcrumb
                 items={[
                   { label: "Documentation", href: "/docs" },
@@ -185,6 +186,11 @@ const FAQPage = () => {
                   </p>
                 </div>
               </section>
+
+              <DocNavigation
+                previous={{ title: "Network Problems", href: "/docs/troubleshooting/network" }}
+                next={{ title: "Media Size Limits", href: "/docs/faq/media-limits" }}
+              />
             </div>
             <TableOfContents items={tocItems} />
           </div>

@@ -3,7 +3,6 @@ import { DocsSidebar } from "@/components/layout/DocsSidebar";
 import { Breadcrumb } from "@/components/docs/Breadcrumb";
 import { TableOfContents } from "@/components/docs/TableOfContents";
 import { DocNavigation } from "@/components/docs/DocNavigation";
-import { Footer } from "@/components/layout/Footer";
 
 const tocItems = [
   { id: "overview", title: "Architecture Overview", level: 2 },
@@ -19,7 +18,7 @@ const IntroductionArchitecture = () => {
       <div className="flex">
         <DocsSidebar />
         <main className="flex-1 overflow-y-auto">
-          <div className="container max-w-4xl px-4 py-8 md:px-12">
+          <div className="container max-w-5xl px-4 py-8 md:px-12">
             <Breadcrumb
               items={[
                 { label: "Documentation", href: "/docs" },
@@ -196,7 +195,6 @@ const IntroductionArchitecture = () => {
               <TableOfContents items={tocItems} />
             </div>
           </div>
-          <Footer />
         </main>
       </div>
     </div>

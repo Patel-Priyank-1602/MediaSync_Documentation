@@ -2,6 +2,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { DocsSidebar } from "@/components/layout/DocsSidebar";
 import { Breadcrumb } from "@/components/docs/Breadcrumb";
 import { TableOfContents } from "@/components/docs/TableOfContents";
+import { DocNavigation } from "@/components/docs/DocNavigation";
 import { AlertTriangle } from "lucide-react";
 
 const tocItems = [
@@ -18,7 +19,7 @@ const TroubleshootingPage = () => {
         <DocsSidebar />
         <main className="flex-1 overflow-y-auto">
           <div className="flex">
-            <div className="container max-w-4xl px-4 py-8 md:px-12">
+            <div className="container max-w-5xl px-4 py-8 md:px-12">
               <Breadcrumb
                 items={[
                   { label: "Documentation", href: "/docs" },
@@ -135,6 +136,11 @@ const TroubleshootingPage = () => {
                   </p>
                 </div>
               </section>
+
+              <DocNavigation
+                previous={{ title: "Latency Optimization", href: "/docs/internals/latency" }}
+                next={{ title: "Sync Delay Issues", href: "/docs/troubleshooting/sync-delay" }}
+              />
             </div>
             <TableOfContents items={tocItems} />
           </div>
