@@ -227,7 +227,7 @@ export function DocsSidebar() {
       {/* Sidebar */}
       <aside
         className={cn(
-          "fixed md:sticky top-14 z-50 h-[calc(100vh-3.5rem)] border-r bg-white dark:bg-[#0b0f14] transition-all duration-300",
+          "fixed md:sticky top-16 z-40 h-[calc(100vh-4rem)] border-r bg-white dark:bg-[#0b0f14] transition-all duration-300",
           isCollapsed ? "w-16" : "w-72",
           isMobileOpen ? "left-0" : "-left-72 md:left-0"
         )}

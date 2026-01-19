@@ -1,5 +1,5 @@
 import React from 'react';
-import { DocsLayout } from '@/components/layout/DocsLayout';
+import { DocsLayout } from '../../components/layout/DocsLayout';
 import { Breadcrumb } from '@/components/docs/Breadcrumb';
 import { TableOfContents } from '@/components/docs/TableOfContents';
 import { DocNavigation } from '@/components/docs/DocNavigation';
