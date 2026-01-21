@@ -45,27 +45,13 @@ const IntroductionArchitecture = () => {
                     The Media Sync Server follows a <strong className="text-foreground">hub-and-spoke model</strong> where 
                     the server acts as a central hub, and all clients (controller and viewers) connect as spokes.
                   </p>
-                  <div className="bg-muted rounded-lg p-6 font-mono text-sm my-6">
-                    <pre className="text-foreground whitespace-pre-wrap">{`┌─────────────────────────────────────────────────────────────┐
-│                     Media Sync Server                        │
-│                    (Node.js + Express)                       │
-│                                                             │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │              Socket.io Hub                           │   │
-│  │   • Event Broadcasting                               │   │
-│  │   • State Management                                 │   │
-│  │   • Client Registry                                  │   │
-│  └─────────────────────────────────────────────────────┘   │
-└─────────────────────────────────────────────────────────────┘
-                            │
-            ┌───────────────┼───────────────┐
-            │               │               │
-            ▼               ▼               ▼
-      ┌──────────┐   ┌──────────┐   ┌──────────┐
-      │Controller│   │ Client 1 │   │ Client N │
-      │  (Host)  │   │ (Viewer) │   │ (Viewer) │
-      └──────────┘   └──────────┘   └──────────┘`}</pre>
-                  </div>
+                    <div className="my-6">
+                    <img 
+                      src="/arc.png" 
+                      alt="Media Sync Server Architecture Diagram" 
+                      className="w-full border border-border"
+                    />
+                    </div>
                 </section>
 
                 <section id="components" className="mb-12">

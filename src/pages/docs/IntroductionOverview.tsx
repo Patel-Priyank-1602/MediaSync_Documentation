@@ -87,7 +87,7 @@ const IntroductionOverview = () => {
                       <div>
                         <h3 className="font-medium text-foreground">Core Controls</h3>
                         <p className="text-sm text-muted-foreground">
-                          Play ▶️, Pause ⏸️, Seek ⏩, and Restart ⏮️.
+                          Play ▶, Pause ⏸, Seek «», and Restart ⟲.
                         </p>
                       </div>
                     </div>
