@@ -20,7 +20,7 @@ const FeaturesLocalAudio = () => {
         { label: 'Features', href: '/docs/features/youtube' },
         { label: 'Local Audio Sync' }
       ]} />
-      
+
       <div className="flex gap-8">
         <div className="flex-1 max-w-3xl">
           <h1 className="text-4xl font-bold mt-6 mb-4">Local Audio Sync</h1>
@@ -47,24 +47,39 @@ const FeaturesLocalAudio = () => {
               </div>
               <h2 className="text-2xl font-semibold">Supported Formats</h2>
             </div>
+
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="p-4 border rounded-lg">
                 <h4 className="font-medium">MP3</h4>
-                <p className="text-sm text-muted-foreground">Universal format, great compatibility</p>
+                <p className="text-sm text-muted-foreground">
+                  Universal format, great compatibility
+                </p>
               </div>
               <div className="p-4 border rounded-lg">
                 <h4 className="font-medium">WAV</h4>
-                <p className="text-sm text-muted-foreground">Uncompressed, highest quality</p>
+                <p className="text-sm text-muted-foreground">
+                  Uncompressed, highest quality
+                </p>
               </div>
               <div className="p-4 border rounded-lg">
                 <h4 className="font-medium">OGG</h4>
-                <p className="text-sm text-muted-foreground">Open format, good compression</p>
+                <p className="text-sm text-muted-foreground">
+                  Open format, good compression
+                </p>
               </div>
               <div className="p-4 border rounded-lg">
                 <h4 className="font-medium">AAC</h4>
-                <p className="text-sm text-muted-foreground">Modern format, excellent quality</p>
+                <p className="text-sm text-muted-foreground">
+                  Modern format, excellent quality
+                </p>
               </div>
             </div>
+
+            {/* EXTRA NOTE */}
+            <p className="mt-4 text-sm text-muted-foreground">
+              <strong className="text-foreground">Also supported:</strong> FLAC, M4A, OPUS, and most
+              browser-supported audio formats.
+            </p>
           </section>
 
           <section id="use-cases" className="mb-12">

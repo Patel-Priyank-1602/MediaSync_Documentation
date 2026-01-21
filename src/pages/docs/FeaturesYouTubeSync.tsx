@@ -73,19 +73,19 @@ const FeaturesYouTubeSync = () => {
             </div>
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="p-4 border rounded-lg">
-                <h4 className="font-medium">▶️ Play/Pause</h4>
+                <h4 className="font-medium">▶  Play/Pause</h4>
                 <p className="text-sm text-muted-foreground">Synchronized across all devices</p>
               </div>
               <div className="p-4 border rounded-lg">
-                <h4 className="font-medium">⏩ Seek</h4>
+                <h4 className="font-medium">⏩︎  Seek</h4>
                 <p className="text-sm text-muted-foreground">Jump to any timestamp</p>
               </div>
               <div className="p-4 border rounded-lg">
-                <h4 className="font-medium">🔄 Video Change</h4>
+                <h4 className="font-medium">🔄︎  Video Change</h4>
                 <p className="text-sm text-muted-foreground">Load new videos on the fly</p>
               </div>
               <div className="p-4 border rounded-lg">
-                <h4 className="font-medium">⏮️ Restart</h4>
+                <h4 className="font-medium">⏮  Restart</h4>
                 <p className="text-sm text-muted-foreground">Reset to beginning</p>
               </div>
             </div>

@@ -92,15 +92,15 @@ const FeaturesQRCode = () => {
             </div>
             <div className="grid gap-4">
               <div className="p-4 border rounded-lg">
-                <h4 className="font-medium">📱 iPhone</h4>
+                <h4 className="font-medium">iPhone</h4>
                 <p className="text-sm text-muted-foreground">Open Camera app → Point at QR → Tap notification</p>
               </div>
               <div className="p-4 border rounded-lg">
-                <h4 className="font-medium">🤖 Android</h4>
+                <h4 className="font-medium">Android</h4>
                 <p className="text-sm text-muted-foreground">Open Camera or Google Lens → Scan → Tap link</p>
               </div>
               <div className="p-4 border rounded-lg">
-                <h4 className="font-medium">💻 Laptop</h4>
+                <h4 className="font-medium">Laptop</h4>
                 <p className="text-sm text-muted-foreground">Use a QR scanner app or browser extension</p>
               </div>
             </div>
