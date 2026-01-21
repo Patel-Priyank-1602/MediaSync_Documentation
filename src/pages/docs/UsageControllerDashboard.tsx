@@ -40,15 +40,15 @@ const UsageControllerDashboard = () => {
             </p>
             <div className="grid gap-4 mt-6">
               <div className="p-4 border rounded-lg">
-                <h4 className="font-medium mb-2">🎛️ Media Controls</h4>
+                <h4 className="font-medium mb-2">Media Controls</h4>
                 <p className="text-sm text-muted-foreground">Play, pause, seek, and restart controls for all media types</p>
               </div>
               <div className="p-4 border rounded-lg">
-                <h4 className="font-medium mb-2">📊 Status Panel</h4>
+                <h4 className="font-medium mb-2">Status Panel</h4>
                 <p className="text-sm text-muted-foreground">Real-time view of connected clients and sync status</p>
               </div>
               <div className="p-4 border rounded-lg">
-                <h4 className="font-medium mb-2">📱 QR Codes</h4>
+                <h4 className="font-medium mb-2">QR Codes</h4>
                 <p className="text-sm text-muted-foreground">Quick-access codes for WiFi and client page connection</p>
               </div>
             </div>
@@ -88,19 +88,19 @@ const UsageControllerDashboard = () => {
                 </thead>
                 <tbody>
                   <tr className="border-b">
-                    <td className="py-3 px-4">▶️ Play</td>
+                    <td className="py-3 px-4">▶ Play</td>
                     <td className="py-3 px-4">Start playback on all clients</td>
                   </tr>
                   <tr className="border-b">
-                    <td className="py-3 px-4">⏸️ Pause</td>
+                    <td className="py-3 px-4">⏸ Pause</td>
                     <td className="py-3 px-4">Pause all clients simultaneously</td>
                   </tr>
                   <tr className="border-b">
-                    <td className="py-3 px-4">⏩ Seek</td>
+                    <td className="py-3 px-4">⏩︎ Seek</td>
                     <td className="py-3 px-4">Jump to specific timestamp</td>
                   </tr>
                   <tr className="border-b">
-                    <td className="py-3 px-4">⏮️ Restart</td>
+                    <td className="py-3 px-4">⏮ Restart</td>
                     <td className="py-3 px-4">Reset playback to beginning</td>
                   </tr>
                 </tbody>
