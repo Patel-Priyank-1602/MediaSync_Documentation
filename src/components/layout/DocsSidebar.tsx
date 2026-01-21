@@ -200,9 +200,49 @@ function SidebarGroup({
   );
 }
 
-export function DocsSidebar() {
+interface DocsSidebarProps {
+  embedded?: boolean;
+  onLinkClick?: () => void;
+}
+
+export function DocsSidebar({ embedded = false, onLinkClick }: DocsSidebarProps) {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+
+  const handleLinkClick = () => {
+    if (onLinkClick) {
+      onLinkClick();
+    }
+    setIsMobileOpen(false);
+  };
+
+  // When embedded, render just the navigation content
+  if (embedded) {
+    return (
+      <div className="flex h-full flex-col">
+        <div className="flex-1 overflow-y-auto px-3 py-4">
+          <Link
+            to="/docs"
+            onClick={handleLinkClick}
+            className="mb-4 block px-3 text-sm font-semibold text-blue-600 dark:text-blue-400"
+          >
+            Documentation
+          </Link>
+
+          <nav className="space-y-2">
+            {sidebarItems.map((item) => (
+              <SidebarGroup
+                key={item.title}
+                item={item}
+                isCollapsed={false}
+                onLinkClick={handleLinkClick}
+              />
+            ))}
+          </nav>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -247,7 +287,7 @@ export function DocsSidebar() {
                   key={item.title}
                   item={item}
                   isCollapsed={isCollapsed}
-                  onLinkClick={() => setIsMobileOpen(false)}
+                  onLinkClick={handleLinkClick}
                 />
               ))}
             </nav>

@@ -35,22 +35,22 @@ export function Navbar() {
 
       <header
         className={cn(
-          "z-50 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]",
+          "z-[100] transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]",
 
           isHomePage
             ? "fixed left-1/2 -translate-x-1/2"
-            : "sticky top-0 w-full border-b bg-background/95 backdrop-blur",
+            : "sticky top-0 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80",
 
           isHomePage &&
             !isScrolled &&
             "top-5 md:top-8 w-[95%] md:max-w-7xl rounded-full border " +
-              "bg-background/90 dark:bg-background/70 backdrop-blur-xl shadow-lg " +
-              "border-border/50 dark:border-white/10",
+              "bg-background/95 dark:bg-background/90 backdrop-blur-xl shadow-lg " +
+              "border-border/50 dark:border-white/15 supports-[backdrop-filter]:bg-background/85",
 
           isHomePage &&
             isScrolled &&
             "top-0 w-full max-w-none rounded-none border-b " +
-              "bg-background/95 dark:bg-background/80 backdrop-blur-xl shadow-sm"
+              "bg-background/98 dark:bg-background/95 backdrop-blur-xl shadow-sm"
         )}
       >
         {/* Main Row */}
@@ -211,8 +211,8 @@ export function Navbar() {
           <div
             className={cn(
               "mx-2 mt-2 rounded-3xl shadow-2xl border overflow-hidden",
-              "bg-background/95 dark:bg-background/80 backdrop-blur-2xl",
-              "border-border/60 dark:border-white/10"
+              "bg-background dark:bg-background",
+              "border-border dark:border-border"
             )}
           >
             <nav className="flex flex-col p-2 space-y-1">

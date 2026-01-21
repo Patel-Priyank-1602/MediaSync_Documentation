@@ -131,7 +131,7 @@ const SetupGuidePage = () => {
                 </Button>
               </div>
               <div className="flex-1 overflow-y-auto">
-                <DocsSidebar />
+                <DocsSidebar embedded onLinkClick={() => setMobileMenuOpen(false)} />
               </div>
             </div>
           </div>
@@ -493,28 +493,6 @@ const SetupGuidePage = () => {
                   </div>
                 </div>
               </StepSection>
-            </section>
-
-            {/* What's Next */}
-            <section className="mb-10" id="whats-next">
-              <div className="rounded-xl bg-gradient-to-br from-muted to-transparent border border-border p-4 md:p-6">
-                <h2 className="text-xl font-semibold text-foreground mb-4">What's Next?</h2>
-                <div className="grid gap-3 sm:grid-cols-3">
-                  {[
-                    { title: "Learn Usage", icon: Play, href: "/docs/usage", desc: "Detailed guide" },
-                    { title: "Troubleshoot", icon: Monitor, href: "/docs/troubleshooting", desc: "Fix issues" },
-                    { title: "FAQ", icon: Terminal, href: "/docs/faq", desc: "Common questions" },
-                  ].map((item, i) => (
-                    <a key={i} href={item.href} className="flex flex-col p-4 rounded-lg bg-background border border-border/50 hover:border-primary/50 transition-all group">
-                      <div className="mb-3 p-2 w-fit rounded-md bg-primary/10 text-primary group-hover:scale-110 transition-transform">
-                        <item.icon className="h-5 w-5" />
-                      </div>
-                      <h4 className="font-medium text-sm text-foreground group-hover:text-primary transition-colors">{item.title}</h4>
-                      <p className="text-xs text-muted-foreground mt-1">{item.desc}</p>
-                    </a>
-                  ))}
-                </div>
-              </div>
             </section>
 
             <DocNavigation
