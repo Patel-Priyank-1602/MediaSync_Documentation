@@ -160,10 +160,6 @@ const GettingStartedNetwork = () => {
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-start gap-3">
                       <span className="text-primary">•</span>
-                      <span><strong className="text-foreground">Use wired Ethernet</strong> for the host machine when possible for maximum stability</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-primary">•</span>
                       <span><strong className="text-foreground">Disable VPNs</strong> on all devices as they can interfere with local network discovery</span>
                     </li>
                     <li className="flex items-start gap-3">

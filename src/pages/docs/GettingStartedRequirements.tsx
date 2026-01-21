@@ -75,7 +75,7 @@ const GettingStartedRequirements = () => {
                         </tr>
                         <tr>
                           <td className="p-4 text-muted-foreground">Network</td>
-                          <td className="p-4 text-foreground">Wired Ethernet recommended for stability</td>
+                          <td className="p-4 text-foreground">Ethernet or Hotspot</td>
                         </tr>
                       </tbody>
                     </table>
@@ -112,7 +112,7 @@ const GettingStartedRequirements = () => {
                   </ul>
                   <div className="bg-muted/50 border border-border rounded-lg p-4 mt-4">
                     <p className="text-sm text-muted-foreground">
-                      <strong className="text-foreground">Supported Devices:</strong> Laptops, tablets, smartphones, 
+                      <strong className="text-foreground">Supported Devices:</strong> Laptops, tablets, smartphones,
                       smart TVs with browsers, and any device with a modern web browser.
                     </p>
                   </div>
@@ -148,7 +148,7 @@ const GettingStartedRequirements = () => {
                   </ul>
                   <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-4 mt-4">
                     <p className="text-sm text-foreground">
-                      <strong>⚠️ Important:</strong> This server is designed for local networks only. 
+                      <strong>⚠️ Important:</strong> This server is designed for local networks only.
                       Internet-based synchronization is not supported.
                     </p>
                   </div>
@@ -191,14 +191,13 @@ const GettingStartedRequirements = () => {
                           <td className="p-4 text-muted-foreground">80+</td>
                           <td className="p-4"><span className="text-green-500">✓ Supported</span></td>
                         </tr>
-                        <tr>
-                          <td className="p-4 text-foreground">Internet Explorer</td>
-                          <td className="p-4 text-muted-foreground">—</td>
-                          <td className="p-4"><span className="text-red-500">✗ Not Supported</span></td>
-                        </tr>
                       </tbody>
                     </table>
                   </div>
+                  <p className="mt-4 text-sm text-muted-foreground">
+                      <strong className="text-foreground">Note:</strong> All modern Chromium-based browsers
+                      (such as Brave, Opera, Vivaldi, Arc, and Samsung Internet) are supported.
+                    </p>
                 </section>
 
                 <DocNavigation

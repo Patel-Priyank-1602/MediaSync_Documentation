@@ -8,11 +8,12 @@ import { useState } from "react";
 import { Footer } from "@/components/layout/Footer";
 
 const tocItems = [
-  { id: "prerequisites", title: "Prerequisites", level: 2 },
-  { id: "clone", title: "Clone or Download", level: 2 },
-  { id: "install", title: "Install Dependencies", level: 2 },
-  { id: "project-structure", title: "Project Structure", level: 2 },
-  { id: "start", title: "Start the Server", level: 2 },
+  { id: "prerequisites", title: "1. Prerequisites", level: 2 },
+  { id: "clone", title: "2. Clone or Download", level: 2 },
+  { id: "install", title: "3. Install Dependencies", level: 2 },
+  { id: "project-structure", title: "4. Project Structure", level: 2 },
+  { id: "start", title: "5. Start the Server", level: 2 },
+  { id: "next", title: "6. Config.json", level: 2 },
 ];
 
 function CodeBlock({ code, language = "bash" }: { code: string; language?: string }) {
@@ -99,8 +100,8 @@ const GettingStartedInstallation = () => {
                   <p className="text-muted-foreground mb-4">
                     Get the project files using Git:
                   </p>
-                  <CodeBlock code={`git clone <your-repo-url>
-cd media_sync`} />
+                  <CodeBlock code={`git clone https://github.com/Patel-Priyank-1602/Media_Sync.git
+cd Media_Sync`} />
                   <p className="text-muted-foreground mt-4">
                     Or download and extract the ZIP file, then navigate to the project directory.
                   </p>
@@ -132,20 +133,13 @@ cd media_sync`} />
                   <div className="bg-muted rounded-lg p-4 font-mono text-sm">
                     <pre className="text-foreground">{`/your-project
 ├── node_modules/
-├── uploads/  
+├── uploads/             
 ├── public/
 │   ├── client.html      ← The video player page 💻
 │   └── controller.html  ← The remote control page 📱
 ├── config.json
 ├── package.json
 └── server.js`}</pre>
-                  </div>
-                  <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-4 mt-4">
-                    <p className="text-sm text-foreground">
-                      <strong>⚠️ Important:</strong> You must create a <code className="bg-muted px-1.5 py-0.5 rounded">public</code> folder 
-                      and place your <code className="bg-muted px-1.5 py-0.5 rounded">controller.html</code> and 
-                      <code className="bg-muted px-1.5 py-0.5 rounded ml-1">client.html</code> files inside it.
-                    </p>
                   </div>
                 </section>
 
@@ -184,11 +178,10 @@ cd media_sync`} />
                   </div>
                 </section>
 
-                <div className="bg-primary/10 border border-primary/20 rounded-lg p-6">
+                <div id="next" className="bg-primary/10 border border-primary/20 rounded-lg p-6">
                   <h3 className="font-semibold text-foreground mb-2">🎉 Next Steps</h3>
                   <p className="text-muted-foreground">
-                    Now proceed to <a href="/docs/setup" className="text-primary hover:underline">First-Time Setup</a> to 
-                    configure your WiFi credentials and open the controller dashboard.
+                    Before running the Media Sync Server for the first time, you need to configure <a href="/docs/setup-guide" className="text-primary hover:underline">Your WiFi credentials</a> so client devices can easily connect to the same network.
                   </p>
                 </div>
 
