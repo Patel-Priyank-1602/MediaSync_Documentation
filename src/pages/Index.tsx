@@ -55,7 +55,7 @@ const Index = () => {
               <Button variant="signup" size="lg" className="text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3 h-auto rounded-full w-full sm:w-auto" onClick={() => navigate("/docs")}>
                 Get Started <span className="ml-1">→</span>
               </Button>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+              <a href="https://github.com/Patel-Priyank-1602/Media_Sync" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
                 <Button variant="ghost" size="lg" className="gap-2 text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3 h-auto rounded-full border border-border hover:bg-muted/50 w-full">
                   <Github className="h-4 w-4 sm:h-5 sm:w-5" />
                   Star on GitHub
