@@ -202,13 +202,14 @@ const SetupGuidePage = () => {
                 <div className="rounded-lg overflow-hidden border border-border">
                   <div className="relative" style={{ paddingTop: "56.25%" }}>
                     <iframe
-                      src="https://www.youtube.com/embed/VIDEO_ID"
+                      src="https://www.youtube.com/embed/JxuEt9CVBTs"
                       title="Full setup guide and feature explain"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
+                      loading="lazy"
                       className="absolute inset-0 w-full h-full"
                     />
-                  </div>
+                </div>
                 </div>
               </div>
             </section>
