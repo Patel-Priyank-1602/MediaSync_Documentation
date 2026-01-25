@@ -172,7 +172,7 @@ export function Navbar() {
             )}
 
             <div className="hidden md:flex gap-2">
-              <a href="https://github.com" target="_blank" rel="noreferrer">
+              <a href="https://github.com/Patel-Priyank-1602/Media_Sync.git" target="_blank" rel="noreferrer">
                 <Button variant="ghost" size="icon" className="rounded-full w-10 h-10">
                   <Github className="h-5 w-5" />
                 </Button>
@@ -269,7 +269,7 @@ export function Navbar() {
               )}
 
               <div className="mt-2 p-2 bg-muted/40 dark:bg-muted/20 rounded-xl flex gap-2">
-                <a href="https://github.com" className="flex-1">
+                <a href="https://github.com/Patel-Priyank-1602/Media_Sync.git" className="flex-1">
                   <Button variant="ghost" className="w-full">
                     <Github className="h-4 w-4 mr-2" />
                     GitHub
