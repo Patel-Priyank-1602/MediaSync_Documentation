@@ -35,6 +35,11 @@ import FeaturesLocalAudio from "./pages/docs/FeaturesLocalAudio";
 import FeaturesSeekDrift from "./pages/docs/FeaturesSeekDrift";
 import FeaturesQRCode from "./pages/docs/FeaturesQRCode";
 import FeaturesMultiClient from "./pages/docs/FeaturesMultiClient";
+import FeaturesChatSystem from "./pages/docs/FeaturesChatSystem";
+import FeaturesClientJoin from "./pages/docs/FeaturesClientJoin";
+import FeaturesControllerDashboard from "./pages/docs/FeaturesControllerDashboard";
+import FeaturesNowPlaying from "./pages/docs/FeaturesNowPlaying";
+import FeaturesPDFSync from "./pages/docs/FeaturesPDFSync";
 
 // Dashboard
 import DashboardClientStatus from "./pages/docs/DashboardClientStatus";
@@ -68,64 +73,69 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/docs" element={<Docs />} />
-          
-          {/* Introduction */}
-          <Route path="/docs/introduction/overview" element={<IntroductionOverview />} />
-          <Route path="/docs/introduction/architecture" element={<IntroductionArchitecture />} />
-          <Route path="/docs/introduction/use-cases" element={<IntroductionUseCases />} />
-          
-          {/* Getting Started */}
-          <Route path="/docs/setup-guide" element={<SetupGuidePage />} />
-          <Route path="/docs/getting-started/requirements" element={<GettingStartedRequirements />} />
-          <Route path="/docs/getting-started/installation" element={<GettingStartedInstallation />} />
-          <Route path="/docs/getting-started/setup" element={<GettingStartedSetup />} />
-          <Route path="/docs/getting-started/network" element={<GettingStartedNetwork />} />
-          
-          {/* Usage Guide */}
-          <Route path="/docs/usage/controller" element={<UsageControllerDashboard />} />
-          <Route path="/docs/usage/joining" element={<UsageJoiningClient />} />
-          <Route path="/docs/usage/playback" element={<UsagePlaybackControls />} />
-          <Route path="/docs/usage/host-client" element={<UsageHostClient />} />
-          
-          {/* Features */}
-          <Route path="/docs/features/youtube" element={<FeaturesYouTubeSync />} />
-          <Route path="/docs/features/local-video" element={<FeaturesLocalVideo />} />
-          <Route path="/docs/features/local-audio" element={<FeaturesLocalAudio />} />
-          <Route path="/docs/features/seek-drift" element={<FeaturesSeekDrift />} />
-          <Route path="/docs/features/qr-code" element={<FeaturesQRCode />} />
-          <Route path="/docs/features/multi-client" element={<FeaturesMultiClient />} />
-          
-          {/* Dashboard */}
-          <Route path="/docs/dashboard/status" element={<DashboardClientStatus />} />
-          <Route path="/docs/dashboard/playback" element={<DashboardPlaybackMonitor />} />
-          <Route path="/docs/dashboard/sync-health" element={<DashboardSyncHealth />} />
-          
-          {/* Configuration */}
-          <Route path="/docs/config/overview" element={<ConfigOverview />} />
-          <Route path="/docs/config/options" element={<ConfigOptions />} />
-          <Route path="/docs/config/performance" element={<ConfigPerformance />} />
-          <Route path="/docs/config/security" element={<ConfigSecurity />} />
-          
-          {/* Troubleshooting */}
-          <Route path="/docs/troubleshooting/errors" element={<TroubleshootingErrors />} />
-          <Route path="/docs/troubleshooting/sync-delay" element={<TroubleshootingSyncDelay />} />
-          <Route path="/docs/troubleshooting/media" element={<TroubleshootingMedia />} />
-          <Route path="/docs/troubleshooting/network" element={<TroubleshootingNetwork />} />
-          
-          {/* FAQ */}
-          <Route path="/docs/faq/devices" element={<FAQDevices />} />
-          <Route path="/docs/faq/media-limits" element={<FAQMediaLimits />} />
-          <Route path="/docs/faq/browsers" element={<FAQBrowsers />} />
-          
-          {/* Other pages */}
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+            <Route path="/" element={<Index />} />
+            <Route path="/docs" element={<Docs />} />
+
+            {/* Introduction */}
+            <Route path="/docs/introduction/overview" element={<IntroductionOverview />} />
+            <Route path="/docs/introduction/architecture" element={<IntroductionArchitecture />} />
+            <Route path="/docs/introduction/use-cases" element={<IntroductionUseCases />} />
+
+            {/* Getting Started */}
+            <Route path="/docs/setup-guide" element={<SetupGuidePage />} />
+            <Route path="/docs/getting-started/requirements" element={<GettingStartedRequirements />} />
+            <Route path="/docs/getting-started/installation" element={<GettingStartedInstallation />} />
+            <Route path="/docs/getting-started/setup" element={<GettingStartedSetup />} />
+            <Route path="/docs/getting-started/network" element={<GettingStartedNetwork />} />
+
+            {/* Usage Guide */}
+            <Route path="/docs/usage/controller" element={<UsageControllerDashboard />} />
+            <Route path="/docs/usage/joining" element={<UsageJoiningClient />} />
+            <Route path="/docs/usage/playback" element={<UsagePlaybackControls />} />
+            <Route path="/docs/usage/host-client" element={<UsageHostClient />} />
+
+            {/* Features */}
+            <Route path="/docs/features/youtube" element={<FeaturesYouTubeSync />} />
+            <Route path="/docs/features/local-video" element={<FeaturesLocalVideo />} />
+            <Route path="/docs/features/local-audio" element={<FeaturesLocalAudio />} />
+            <Route path="/docs/features/seek-drift" element={<FeaturesSeekDrift />} />
+            <Route path="/docs/features/qr-code" element={<FeaturesQRCode />} />
+            <Route path="/docs/features/multi-client" element={<FeaturesMultiClient />} />
+            <Route path="/docs/features/chat" element={<FeaturesChatSystem />} />
+            <Route path="/docs/features/client-join" element={<FeaturesClientJoin />} />
+            <Route path="/docs/features/dashboard" element={<FeaturesControllerDashboard />} />
+            <Route path="/docs/features/now-playing" element={<FeaturesNowPlaying />} />
+            <Route path="/docs/features/pdf-sync" element={<FeaturesPDFSync />} />
+
+            {/* Dashboard */}
+            <Route path="/docs/dashboard/status" element={<DashboardClientStatus />} />
+            <Route path="/docs/dashboard/playback" element={<DashboardPlaybackMonitor />} />
+            <Route path="/docs/dashboard/sync-health" element={<DashboardSyncHealth />} />
+
+            {/* Configuration */}
+            <Route path="/docs/config/overview" element={<ConfigOverview />} />
+            <Route path="/docs/config/options" element={<ConfigOptions />} />
+            <Route path="/docs/config/performance" element={<ConfigPerformance />} />
+            <Route path="/docs/config/security" element={<ConfigSecurity />} />
+
+            {/* Troubleshooting */}
+            <Route path="/docs/troubleshooting/errors" element={<TroubleshootingErrors />} />
+            <Route path="/docs/troubleshooting/sync-delay" element={<TroubleshootingSyncDelay />} />
+            <Route path="/docs/troubleshooting/media" element={<TroubleshootingMedia />} />
+            <Route path="/docs/troubleshooting/network" element={<TroubleshootingNetwork />} />
+
+            {/* FAQ */}
+            <Route path="/docs/faq/devices" element={<FAQDevices />} />
+            <Route path="/docs/faq/media-limits" element={<FAQMediaLimits />} />
+            <Route path="/docs/faq/browsers" element={<FAQBrowsers />} />
+
+            {/* Other pages */}
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
     </ThemeProvider>
   </QueryClientProvider>
 );

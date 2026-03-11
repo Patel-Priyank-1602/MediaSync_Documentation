@@ -17,6 +17,9 @@ import {
   Sparkles,
   Gamepad2,
   Rocket,
+  MessageSquare,
+  UserPlus,
+  MonitorPlay,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Link, useLocation } from "react-router-dom";
@@ -69,6 +72,11 @@ const sidebarItems: SidebarItem[] = [
       { title: "Real-Time Seek & Drift", href: "/docs/features/seek-drift" },
       { title: "QR Code Device Join", href: "/docs/features/qr-code" },
       { title: "Multi-Client Handling", href: "/docs/features/multi-client" },
+      { title: "Chat System", href: "/docs/features/chat" },
+      { title: "Client Join & Approval", href: "/docs/features/client-join" },
+      { title: "Controller Dashboard", href: "/docs/features/dashboard" },
+      { title: "Now Playing Preview", href: "/docs/features/now-playing" },
+      { title: "PDF Synchronization", href: "/docs/features/pdf-sync" },
     ],
   },
   {

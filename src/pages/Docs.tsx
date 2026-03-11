@@ -1,4 +1,4 @@
-import { Video, Music, Wifi, Settings, Terminal, AlertTriangle, Smartphone, FileCode, HelpCircle } from "lucide-react";
+import { Video, Music, Wifi, Settings, Terminal, AlertTriangle, Smartphone, FileCode, HelpCircle, MessageSquare, FileText, UserPlus, MonitorPlay } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { DocsSidebar } from "@/components/layout/DocsSidebar";
 import { DocCard } from "@/components/docs/DocCard";
@@ -75,6 +75,30 @@ const DocsPage = () => {
                   title="Status Dashboard"
                   description="Monitor connected clients in real-time."
                   href="/docs/dashboard/status"
+                />
+                <DocCard
+                  icon={<MessageSquare className="h-6 w-6" />}
+                  title="Chat System"
+                  description="Real-time chat between controller and all clients."
+                  href="/docs/features/chat"
+                />
+                <DocCard
+                  icon={<UserPlus className="h-6 w-6" />}
+                  title="Client Join & Approval"
+                  description="Name-based identification with controller approval."
+                  href="/docs/features/client-join"
+                />
+                <DocCard
+                  icon={<MonitorPlay className="h-6 w-6" />}
+                  title="Now Playing Preview"
+                  description="Live controller preview with auto-sync to clients."
+                  href="/docs/features/now-playing"
+                />
+                <DocCard
+                  icon={<FileText className="h-6 w-6" />}
+                  title="PDF Synchronization"
+                  description="Sync PDFs with drawing, highlighting, and zoom tools."
+                  href="/docs/features/pdf-sync"
                 />
               </div>
             </section>
