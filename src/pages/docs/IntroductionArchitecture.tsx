@@ -47,7 +47,7 @@ const IntroductionArchitecture = () => {
                   </p>
                     <div className="my-6">
                     <img 
-                      src="/arch.png" 
+                      src="/RMS.png" 
                       alt="Media Sync Server Architecture Diagram" 
                       className="w-full border border-border"
                     />
